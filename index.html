@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Nexora Constructions - Leading construction solutions built on quality, safety, and unwavering commitment. We don't just construct buildings, we build trust.">
+  <title>Nexora Constructions | Premium Commercial & Residential Architecture</title>
+
+  <!-- Google Fonts: Outfit (Sans-Serif) & Satisfy (Script) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Satisfy&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Three.js Import Map -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <!-- Screen Wrapper to contain Hero Section and its specific Background video/overlay -->
+  <div class="hero-screen-wrapper">
+
+    <!-- Dynamic SVG Geometric Background Overlays -->
+    <div class="geometric-background">
+      <!-- Darkened Construction Background Video -->
+      <video class="bg-video" autoplay muted loop playsinline>
+        <source src="assets/hero_video.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <!-- Header Section -->
+    <header class="main-header">
+      <!-- Brand Logo -->
+      <div class="logo-container">
+        <a href="#" class="logo" id="header-logo" aria-label="Nexora Constructions Home">
+          <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <!-- Geometric building blocks mimicking the luxury Nexora design -->
+            <polygon points="20,80 40,80 40,30 20,40" fill="rgba(21, 103, 53, 0.7)" />
+            <polygon points="45,80 65,80 65,15 45,25" fill="rgba(21, 103, 53, 1)" />
+            <polygon points="70,80 90,80 90,45 70,55" fill="rgba(21, 103, 53, 0.5)" />
+          </svg>
+          <div class="logo-text">
+            <span class="brand-name">NEXORA</span>
+            <span class="brand-sub">CONSTRUCTIONS</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation Menu (Desktop) -->
+      <nav class="nav-bar">
+        <ul class="nav-links">
+          <li><a href="#about" class="nav-item">ABOUT</a></li>
+          <li><a href="#services" class="nav-item">SERVICES</a></li>
+          <li><a href="#projects" class="nav-item">PROJECTS</a></li>
+          <li><a href="#process" class="nav-item">PROCESS</a></li>
+          <li><a href="#company" class="nav-item">COMPANY</a></li>
+          <li><a href="#contact" class="nav-item">CONTACT</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Hamburger Menu Trigger -->
+      <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+        <span class="menu-label">MENU</span>
+        <div class="hamburger-icon">
+          <span class="bar bar-top"></span>
+          <span class="bar bar-mid"></span>
+          <span class="bar bar-bot"></span>
+        </div>
+      </button>
+    </header>
+
+    <!-- Mobile Overlay Menu (Initially Hidden) -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+      <button class="close-mobile-menu" id="close-mobile-menu-btn" aria-label="Close Menu">&times;</button>
+      <ul class="mobile-nav-links">
+        <li><a href="#about" class="mobile-nav-item">ABOUT</a></li>
+        <li><a href="#services" class="mobile-nav-item">SERVICES</a></li>
+        <li><a href="#projects" class="mobile-nav-item">PROJECTS</a></li>
+        <li><a href="#process" class="mobile-nav-item">PROCESS</a></li>
+        <li><a href="#company" class="mobile-nav-item">COMPANY</a></li>
+        <li><a href="#contact" class="mobile-nav-item">CONTACT</a></li>
+      </ul>
+    </div>
+
+    <!-- Hero Content Grid -->
+    <main class="hero-container">
+
+      <!-- Left Sidebar: Rotated Text & Slide indicator -->
+      <aside class="left-sidebar">
+        <div class="vertical-text-wrapper">
+          <!-- <span class="vertical-text">BUILDING THE FUTURE</span> -->
+        </div>
+        <!-- <div class="slide-indicator">
+        <span class="current-slide">01</span>
+        <span class="slide-divider">/</span>
+        <span class="total-slides">06</span>
+      </div> -->
+      </aside>
+
+      <!-- Center Column: Core Content -->
+      <section class="main-content">
+        <!-- Play Showreel Button -->
+        <!-- <button class="play-showreel-btn" id="play-video-btn" aria-label="Play showreel video">
+        <span class="play-icon-circle">
+          <svg class="play-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="8,5 19,12 8,19" fill="#0a0c10" />
+          </svg>
+        </span>
+        <span class="play-text">PLAY SHOWREEL</span>
+      </button> -->
+
+        <!-- Primary Headlines -->
+        <h1 class="hero-title animate-title">
+          <span class="title-line">We don't just</span>
+          <span class="title-line">construct buildings,</span>
+          <span class="title-line signature">We build trust.</span>
+        </h1>
+
+        <!-- Subtitle Description -->
+        <p class="hero-description animate-desc">
+          From blueprint to reality, we deliver exceptional construction solutions with quality, safety and commitment.
+        </p>
+
+        <!-- CTA Button -->
+        <div class="cta-wrapper animate-cta">
+          <a href="#projects" class="cta-link" id="explore-cta">
+            EXPLORE OUR WORK
+            <svg class="arrow-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <line x1="2" y1="12" x2="22" y2="12" stroke="#d4af37" stroke-width="2" />
+              <polyline points="15,5 22,12 15,19" fill="none" stroke="#d4af37" stroke-width="2" stroke-linejoin="round"
+                stroke-linecap="round" />
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <!-- Right Sidebar: Stats Column -->
+      <aside class="right-sidebar">
+
+        <!-- Stat 1: Years of Experience -->
+        <div class="stat-card">
+          <div class="stat-icon-wrapper">
+            <!-- Building Outline Icon -->
+            <svg class="stat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <line x1="9" y1="3" x2="9" y2="21" />
+              <line x1="15" y1="3" x2="15" y2="21" />
+              <line x1="3" y1="9" x2="21" y2="9" />
+              <line x1="3" y1="15" x2="21" y2="15" />
+            </svg>
+          </div>
+          <div class="stat-number">15+</div>
+          <div class="stat-label">YEARS OF EXPERIENCE</div>
+          <div class="stat-bar"></div>
+        </div>
+
+        <!-- Stat 2: Projects Completed -->
+        <div class="stat-card">
+          <div class="stat-icon-wrapper">
+            <!-- Hardhat/Safety Icon -->
+            <svg class="stat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M2 12C2 6.48 6.48 2 12 2s10 4.48 10 10" />
+              <path d="M5 12h14M12 2v10M9 7h6" />
+              <rect x="10" y="12" width="4" height="9" rx="1" />
+            </svg>
+          </div>
+          <div class="stat-number">350+</div>
+          <div class="stat-label">PROJECTS COMPLETED</div>
+          <div class="stat-bar"></div>
+        </div>
+
+        <!-- Stat 3: Happy Clients -->
+        <div class="stat-card">
+          <div class="stat-icon-wrapper">
+            <!-- Team/Clients Icon -->
+            <svg class="stat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <div class="stat-number">500+</div>
+          <div class="stat-label">HAPPY CLIENTS</div>
+          <div class="stat-bar"></div>
+        </div>
+
+        <!-- Stat 4: On-time Delivery -->
+        <div class="stat-card">
+          <div class="stat-icon-wrapper">
+            <!-- Quality Badge Icon -->
+            <svg class="stat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="12" cy="8" r="7" />
+              <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88" />
+            </svg>
+          </div>
+          <div class="stat-number">98%</div>
+          <div class="stat-label">ON-TIME DELIVERY</div>
+          <div class="stat-bar"></div>
+        </div>
+
+      </aside>
+
+    </main>
+
+    <!-- Scroll Down Indicator -->
+    <!-- <footer class="hero-footer">
+    <div class="scroll-discover">
+      <span class="scroll-text">SCROLL TO DISCOVER</span>
+      <div class="scroll-indicator-line">
+        <div class="scroll-line-animated"></div>
+      </div>
+      <div class="chevron-down-wrapper">
+        <svg class="chevron-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <polyline points="6,9 12,15 18,9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </div>
+    </div>
+  </footer> -->
+
+  </div> <!-- End .hero-screen-wrapper -->
+
+  <!-- Featured Work Section -->
+  <section class="featured-section" id="projects">
+    <!-- Visual Details: Dot Grids and Faint Wireframe -->
+    <div class="visual-decorations">
+      <!-- Top-left Dot Matrix Grid -->
+      <svg class="dot-matrix dm-top-left" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="30" cy="10" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="50" cy="10" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="70" cy="10" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="90" cy="10" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="10" cy="30" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="30" cy="30" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="50" cy="30" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="70" cy="30" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="90" cy="30" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="10" cy="50" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="30" cy="50" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="50" cy="50" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="70" cy="50" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+        <circle cx="90" cy="50" r="1.5" fill="rgba(15, 18, 22, 0.15)" />
+      </svg>
+      <!-- Bottom-left Dot Matrix Grid -->
+      <svg class="dot-matrix dm-bottom-left" viewBox="0 0 100 60" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="30" cy="10" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="50" cy="10" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="70" cy="10" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="90" cy="10" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="10" cy="30" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="30" cy="30" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="50" cy="30" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="70" cy="30" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="90" cy="30" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="10" cy="50" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="30" cy="50" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="50" cy="50" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="70" cy="50" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+        <circle cx="90" cy="50" r="1.5" fill="rgba(15, 18, 22, 0.12)" />
+      </svg>
+      <!-- Bottom-left House Drafting Blueprints -->
+      <svg class="blueprint-vector" viewBox="0 0 500 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M 50,300 L 450,300" stroke="rgba(212, 175, 55, 0.12)" stroke-width="1" />
+        <path d="M 120,300 L 120,180 L 250,110 L 380,180 L 380,300" stroke="rgba(212, 175, 55, 0.12)"
+          stroke-width="1" />
+        <path d="M 250,110 L 250,300" stroke="rgba(212, 175, 55, 0.08)" stroke-width="0.75" stroke-dasharray="4 4" />
+        <path d="M 120,180 L 380,180" stroke="rgba(212, 175, 55, 0.08)" stroke-width="0.75" stroke-dasharray="4 4" />
+        <!-- Secondary structures -->
+        <rect x="150" y="210" width="60" height="90" stroke="rgba(212, 175, 55, 0.1)" stroke-width="1" />
+        <rect x="290" y="200" width="50" height="50" stroke="rgba(212, 175, 55, 0.1)" stroke-width="1" />
+        <circle cx="315" cy="225" r="10" stroke="rgba(212, 175, 55, 0.08)" stroke-width="0.75" />
+        <!-- Roof trusses lines -->
+        <path d="M 185,145 L 250,110" stroke="rgba(212, 175, 55, 0.1)" stroke-width="1" />
+        <path d="M 315,145 L 250,110" stroke="rgba(212, 175, 55, 0.1)" stroke-width="1" />
+        <path d="M 120,180 L 250,180 L 250,110" stroke="rgba(212, 175, 55, 0.06)" stroke-width="0.75" />
+      </svg>
+    </div>
+
+    <div class="featured-grid-container">
+
+      <!-- Left Column: Intros & CTA -->
+      <div class="featured-intro-column">
+        <span class="featured-tag">— FEATURED WORK</span>
+        <h2 class="featured-heading">
+          Built to <br>
+          <span class="italic-serif">Inspire<span class="gold-dot">.</span></span>
+        </h2>
+        <div class="heading-divider"></div>
+        <p class="featured-text">
+          Every project we take on is a commitment to quality, precision and excellence. Here's a look at some of our
+          signature builds.
+        </p>
+        <a href="#all-projects" class="explore-all-btn" id="explore-all-projects-btn">
+          EXPLORE ALL PROJECTS
+          <svg class="explore-arrow-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.5" />
+            <polyline points="15,5 22,12 15,19" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linejoin="round" stroke-linecap="round" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Middle Column: Large Featured Project Card 01 -->
+      <div class="featured-center-column">
+        <div class="project-hero-card">
+          <!-- Top Badge Bar -->
+          <div class="hero-card-badge-bar">
+            <span class="badge-num">01</span>
+            <span class="badge-label">FEATURED PROJECT</span>
+          </div>
+
+          <!-- Image Layer -->
+          <div class="hero-card-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+              alt="The Horizon Residence - Luxury modern home build" class="hero-card-img">
+          </div>
+
+          <!-- Bottom Details Panel (Dark Theme Overlay) -->
+          <div class="hero-card-details">
+            <div class="details-top-row">
+              <div class="details-icon-square">
+                <!-- Mini isometric house outline -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="details-icon-svg">
+                  <path d="M3 9.5L12 4l9 5.5v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9z" />
+                  <path d="M9 22V12h6v10" />
+                </svg>
+              </div>
+              <div class="details-text-group">
+                <h3 class="details-title">THE HORIZON RESIDENCE</h3>
+                <div class="details-location">
+                  <!-- Small map pin SVG icon -->
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="location-pin-svg">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                  <span>Chennai, Tamil Nadu</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="details-description">
+              A premium residential project crafted with modern design and sustainable materials.
+            </p>
+
+            <!-- <div class="details-action-row">
+              <a href="#horizon-project" class="view-project-link">
+                VIEW PROJECT 
+                <svg class="view-arrow-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="2" />
+                  <polyline points="15,5 22,12 15,19" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" />
+                </svg>
+              </a>
+            </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Stacked Project Cards 02 & 03 -->
+      <div class="featured-right-column">
+        <!-- Connecting Line Graphics for design authenticity -->
+        <div class="connector-lines-decor">
+          <div class="line-connector-dot lcd-top"></div>
+          <div class="line-connector-dot lcd-bottom"></div>
+        </div>
+
+        <!-- Card 02: Skyline Office Complex -->
+        <div class="project-side-card">
+          <div class="side-card-header">
+            <span class="side-badge">02</span>
+            <div class="side-title-group">
+              <h3 class="side-card-title">SKYLINE OFFICE COMPLEX</h3>
+              <div class="side-card-location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="location-pin-svg">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>Bangalore, Karnataka</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="side-card-image-box">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+              alt="Skyline Office Complex" class="side-card-img">
+            <a href="#skyline-project" class="side-circle-btn" aria-label="Go to Skyline project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="side-circle-arrow">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7,7 17,7 17,17" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 03: Greenfield Warehouse -->
+        <div class="project-side-card">
+          <div class="side-card-header">
+            <span class="side-badge">03</span>
+            <div class="side-title-group">
+              <h3 class="side-card-title">GREENFIELD WAREHOUSE</h3>
+              <div class="side-card-location">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="location-pin-svg">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>Coimbatore, Tamil Nadu</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="side-card-image-box">
+            <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=800&q=80"
+              alt="Greenfield Warehouse" class="side-card-img">
+            <a href="#greenfield-project" class="side-circle-btn" aria-label="Go to Greenfield project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="side-circle-arrow">
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7,7 17,7 17,17" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </section>
+
+  <!-- Services Showcase Section -->
+  <section class="services-showcase-section" id="services">
+    <div class="services-showcase-container">
+
+      <!-- Left Column: Architectural Showcase Image -->
+      <div class="services-image-column">
+        <div class="services-image-group">
+          <!-- Dark green background accent shape -->
+          <div class="services-image-bg-accent"></div>
+
+          <!-- Main image wrapper -->
+          <div class="services-image-main-wrapper">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+              alt="Premium Modern Architecture" class="services-showcase-img">
+
+            <!-- Overlay Badge -->
+            <div class="services-overlay-badge">
+              <div class="badge-icon-box">
+                <svg class="badge-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="20,80 40,80 40,30 20,40" fill="none" stroke="var(--gold-bright)"
+                    stroke-width="2.5" />
+                  <polygon points="45,80 65,80 65,15 45,25" fill="none" stroke="var(--gold-bright)"
+                    stroke-width="2.5" />
+                  <polygon points="70,80 90,80 90,45 70,55" fill="none" stroke="var(--gold-bright)"
+                    stroke-width="2.5" />
+                  <line x1="10" y1="80" x2="90" y2="80" stroke="var(--gold-bright)" stroke-width="2.5" />
+                </svg>
+              </div>
+              <div class="badge-text-box">
+                <p class="badge-text">Building more than structures—<br><span class="badge-highlight">building
+                    trust.</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Services Details -->
+      <div class="services-content-column">
+        <!-- Subtitle Tag -->
+        <div class="services-subtitle-wrapper">
+          <div class="services-subtitle-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="subtitle-square-svg">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <circle cx="12" cy="12" r="2.5" fill="currentColor" />
+            </svg>
+          </div>
+          <span class="services-subtitle-text">WHAT WE DO</span>
+          <div class="services-subtitle-line"></div>
+        </div>
+
+        <!-- Heading -->
+        <h2 class="services-heading">
+          Services That <span class="serif-bold">Build</span> <span class="serif-highlight">Excellence.</span>
+        </h2>
+        <div class="services-heading-underline"></div>
+
+        <!-- Description -->
+        <p class="services-description">
+          End-to-end construction solutions crafted with precision, innovation, and a commitment to lasting quality. We
+          turn your vision into structures that stand the test of time.
+        </p>
+
+        <!-- Features Grid -->
+        <div class="services-features-grid">
+          <!-- Feature 1: Quality Assurance -->
+          <div class="service-feature-card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feature-icon-svg">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <polyline points="9 11 11 13 15 9" />
+              </svg>
+            </div>
+            <div class="feature-text-wrapper">
+              <h3 class="feature-title">Quality Assurance</h3>
+              <p class="feature-desc">We ensure the highest standards in every step.</p>
+            </div>
+          </div>
+
+          <!-- Divider Line -->
+          <div class="feature-vertical-divider"></div>
+
+          <!-- Feature 2: Expert Team -->
+          <div class="service-feature-card">
+            <div class="feature-icon-wrapper">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feature-icon-svg">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div class="feature-text-wrapper">
+              <h3 class="feature-title">Expert Team</h3>
+              <p class="feature-desc">Skilled professionals dedicated to your vision.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Explore All Services Button -->
+        <div class="services-btn-wrapper">
+          <a href="#services" class="services-explore-btn">
+            <span>EXPLORE ALL SERVICES</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-arrow-svg">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12,5 19,12 12,19" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Our Process Section -->
+  <section class="process-section" id="process">
+    <div class="process-container">
+
+      <!-- Section Header -->
+      <div class="process-header">
+        <div class="process-subtitle-wrapper">
+          <div class="subtitle-diamond">♦</div>
+          <span class="process-subtitle-text">OUR PROCESS</span>
+          <div class="subtitle-diamond">♦</div>
+          <div class="process-subtitle-line"></div>
+        </div>
+        <h2 class="process-heading">
+          A Seamless Process, <span class="serif-highlight">Built on Trust</span>
+        </h2>
+      </div>
+
+      <!-- Process Steps Grid -->
+      <div class="process-grid">
+
+        <!-- Step 1: Consultation -->
+        <div class="process-card">
+          <div class="process-card-flag">01</div>
+          <div class="process-card-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="process-icon-svg">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              <path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round" stroke-linejoin="round"
+                stroke-width="2.5" />
+            </svg>
+          </div>
+          <div class="process-card-text">
+            <h3 class="process-card-title">Consultation</h3>
+            <p class="process-card-desc">We listen to your ideas and understand your goals and needs.</p>
+          </div>
+          <div class="process-card-bottom-line"></div>
+        </div>
+
+        <!-- Step 2: Planning & Design -->
+        <div class="process-card">
+          <div class="process-card-flag">02</div>
+          <div class="process-card-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="process-icon-svg">
+              <path d="M3 3h18v18H3z" />
+              <path d="M12 3v18M3 12h18" stroke-dasharray="2 2" />
+              <circle cx="12" cy="12" r="4" />
+              <path d="M12 12 l3 -3" />
+            </svg>
+          </div>
+          <div class="process-card-text">
+            <h3 class="process-card-title">Planning & Design</h3>
+            <p class="process-card-desc">Our experts create smart, sustainable designs tailored to your vision.</p>
+          </div>
+          <div class="process-card-bottom-line"></div>
+        </div>
+
+        <!-- Step 3: Estimation -->
+        <div class="process-card">
+          <div class="process-card-flag">03</div>
+          <div class="process-card-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="process-icon-svg">
+              <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+              <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+              <path d="M9 10h6M9 14h6M9 18h4" stroke-linecap="round" />
+            </svg>
+          </div>
+          <div class="process-card-text">
+            <h3 class="process-card-title">Estimation</h3>
+            <p class="process-card-desc">We provide transparent cost estimates with complete clarity.</p>
+          </div>
+          <div class="process-card-bottom-line"></div>
+        </div>
+
+        <!-- Step 4: Construction -->
+        <div class="process-card">
+          <div class="process-card-flag">04</div>
+          <div class="process-card-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="process-icon-svg">
+              <path d="M3 21h18M6 21V3l12 6M6 9h12v4M12 9v12M18 9v4M18 13h-4" />
+              <rect x="13" y="13" width="2" height="3" />
+            </svg>
+          </div>
+          <div class="process-card-text">
+            <h3 class="process-card-title">Construction</h3>
+            <p class="process-card-desc">Using advanced technology and skilled craftsmanship we build with precision.
+            </p>
+          </div>
+          <div class="process-card-bottom-line"></div>
+        </div>
+
+        <!-- Step 5: Quality Check -->
+        <div class="process-card">
+          <div class="process-card-flag">05</div>
+          <div class="process-card-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="process-icon-svg">
+              <circle cx="11" cy="11" r="6" />
+              <path d="M16 16l6 6M8 11l2 2 3.5-3.5" />
+            </svg>
+          </div>
+          <div class="process-card-text">
+            <h3 class="process-card-title">Quality Check</h3>
+            <p class="process-card-desc">Rigorous inspections ensure safety, durability and flawless quality.</p>
+          </div>
+          <div class="process-card-bottom-line"></div>
+        </div>
+
+        <!-- Step 6: Handover -->
+        <div class="process-card">
+          <div class="process-card-flag">06</div>
+          <div class="process-card-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="process-icon-svg">
+              <circle cx="12" cy="7" r="3" />
+              <path d="M12 10v9M12 15h3M12 18h2" />
+              <path d="M4 16h3l3 2h5a2 2 0 0 0 2-2V13" />
+            </svg>
+          </div>
+          <div class="process-card-text">
+            <h3 class="process-card-title">Handover</h3>
+            <p class="process-card-desc">On-time delivery with complete support and a smooth handover.</p>
+          </div>
+          <div class="process-card-bottom-line"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  </section>
+
+  <!-- Project Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <div class="gallery-container">
+
+      <!-- Top Section Subtitle -->
+      <div class="gallery-top-subtitle">
+        <div class="subtitle-diamond">♦</div>
+        <span class="gallery-subtitle-text">OUR WORK</span>
+        <div class="subtitle-diamond">♦</div>
+      </div>
+
+      <!-- Gallery Header Row -->
+      <div class="gallery-header-row">
+
+        <!-- Left Column: Intro text and CTAs -->
+        <div class="gallery-intro-col">
+          <h2 class="gallery-heading">Project Gallery</h2>
+          <p class="gallery-description">
+            Explore a selection of our residential and commercial projects that showcase our dedication to quality,
+            craftsmanship and innovative design.
+          </p>
+
+          <div class="gallery-cta-wrapper">
+            <a href="#projects" class="gallery-explore-btn">
+              <span>VIEW ALL PROJECTS</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-arrow-svg">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12,5 19,12 12,19" />
+              </svg>
+            </a>
+
+            <div class="gallery-trust-badge">
+              <div class="badge-circle-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="trust-shield-svg">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 11 11 13 15 9" />
+                </svg>
+              </div>
+              <div class="badge-desc-text">
+                Built with trust.<br>Designed to last.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Large Showcase Image -->
+        <div class="gallery-showcase-col">
+          <div class="showcase-bg-decor">
+            <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="decor-building-svg">
+              <polygon points="20,80 40,80 40,30 20,40" fill="none" stroke="rgba(255, 255, 255, 0.08)"
+                stroke-width="2" />
+              <polygon points="45,80 65,80 65,15 45,25" fill="none" stroke="rgba(255, 255, 255, 0.08)"
+                stroke-width="2" />
+              <polygon points="70,80 90,80 90,45 70,55" fill="none" stroke="rgba(255, 255, 255, 0.08)"
+                stroke-width="2" />
+            </svg>
+          </div>
+          <div class="showcase-image-wrapper">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80"
+              alt="Modern Residence in Coimbatore" class="showcase-img">
+
+            <div class="project-overlay-badge size-large">
+              <div class="project-badge-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="badge-building-svg">
+                  <polygon points="20,80 40,80 40,30 20,40" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <polygon points="45,80 65,80 65,15 45,25" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <polygon points="70,80 90,80 90,45 70,55" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <line x1="10" y1="80" x2="90" y2="80" stroke="currentColor" stroke-width="2.5" />
+                </svg>
+              </div>
+              <div class="project-badge-details">
+                <h4 class="project-badge-title">Modern Residence</h4>
+                <p class="project-badge-location">Coimbatore</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Project Gallery Grid -->
+      <div class="gallery-grid">
+
+        <!-- Card 1: Luxury Villa -->
+        <div class="gallery-card">
+          <div class="card-image-box">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+              alt="Luxury Villa Erode" class="gallery-card-img">
+
+            <div class="project-overlay-badge">
+              <div class="project-badge-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="badge-building-svg">
+                  <polygon points="20,80 40,80 40,30 20,40" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <polygon points="45,80 65,80 65,15 45,25" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <polygon points="70,80 90,80 90,45 70,55" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <line x1="10" y1="80" x2="90" y2="80" stroke="currentColor" stroke-width="2.5" />
+                </svg>
+              </div>
+              <div class="project-badge-details">
+                <h4 class="project-badge-title">Luxury Villa</h4>
+                <p class="project-badge-location">Erode</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Contemporary Home -->
+        <div class="gallery-card">
+          <div class="card-image-box">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80"
+              alt="Contemporary Home Tiruppur" class="gallery-card-img">
+
+            <div class="project-overlay-badge">
+              <div class="project-badge-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="badge-building-svg">
+                  <polygon points="20,80 40,80 40,30 20,40" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <polygon points="45,80 65,80 65,15 45,25" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <polygon points="70,80 90,80 90,45 70,55" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <line x1="10" y1="80" x2="90" y2="80" stroke="currentColor" stroke-width="2.5" />
+                </svg>
+              </div>
+              <div class="project-badge-details">
+                <h4 class="project-badge-title">Contemporary Home</h4>
+                <p class="project-badge-location">Tiruppur</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Combined Feature Card (Interior Design Image + Get In Touch CTA) -->
+        <div class="gallery-combined-card">
+          <!-- Upper Image Showcase with Gradient -->
+          <div class="combined-card-image-box">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80"
+              alt="Interior Design Private Residence" class="combined-card-img">
+            <div class="combined-img-gradient"></div>
+          </div>
+
+          <!-- Bottom CTA Content with Gradient -->
+          <div class="combined-card-content">
+            <div class="combined-content-body">
+              <div class="combined-icon-square">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                  class="combined-cta-icon-svg">
+                  <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                  <circle cx="12" cy="13" r="4" />
+                </svg>
+              </div>
+              <div class="combined-text-stack">
+                <h3 class="combined-card-title">Have a project in mind?</h3>
+                <p class="combined-card-desc">Let's build something amazing together.</p>
+              </div>
+            </div>
+
+            <div class="combined-action-footer">
+              <a href="#contact" class="combined-explore-btn">
+                <span>GET IN TOUCH</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  class="combined-arrow-svg">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12,5 19,12 12,19" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Elegant Interior -->
+        <div class="gallery-card">
+          <div class="card-image-box">
+            <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80"
+              alt="Elegant Interior Coimbatore" class="gallery-card-img">
+
+            <div class="project-overlay-badge">
+              <div class="project-badge-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="badge-building-svg">
+                  <polygon points="20,80 40,80 40,30 20,40" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <polygon points="45,80 65,80 65,15 45,25" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <polygon points="70,80 90,80 90,45 70,55" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <line x1="10" y1="80" x2="90" y2="80" stroke="currentColor" stroke-width="2.5" />
+                </svg>
+              </div>
+              <div class="project-badge-details">
+                <h4 class="project-badge-title">Elegant Interior</h4>
+                <p class="project-badge-location">Coimbatore</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Minimal Residence -->
+        <div class="gallery-card">
+          <div class="card-image-box">
+            <img src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?auto=format&fit=crop&w=800&q=80"
+              alt="Minimal Residence Salem" class="gallery-card-img">
+
+            <div class="project-overlay-badge">
+              <div class="project-badge-icon">
+                <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="badge-building-svg">
+                  <polygon points="20,80 40,80 40,30 20,40" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <polygon points="45,80 65,80 65,15 45,25" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <polygon points="70,80 90,80 90,45 70,55" fill="none" stroke="currentColor" stroke-width="2.5" />
+                  <line x1="10" y1="80" x2="90" y2="80" stroke="currentColor" stroke-width="2.5" />
+                </svg>
+              </div>
+              <div class="project-badge-details">
+                <h4 class="project-badge-title">Minimal Residence</h4>
+                <p class="project-badge-location">Salem</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Features Bar -->
+      <div class="gallery-features-bar">
+
+        <!-- Feature 1 -->
+        <div class="gallery-feature-item">
+          <div class="g-feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="g-feature-svg">
+              <circle cx="12" cy="8" r="7" />
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+            </svg>
+          </div>
+          <div class="g-feature-text-stack">
+            <h4 class="g-feature-title">Quality Construction</h4>
+            <p class="g-feature-desc">We use premium materials and follow the highest standards.</p>
+          </div>
+        </div>
+
+        <!-- Vertical Divider -->
+        <div class="g-feature-divider"></div>
+
+        <!-- Feature 2 -->
+        <div class="gallery-feature-item">
+          <div class="g-feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="g-feature-svg">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+          </div>
+          <div class="g-feature-text-stack">
+            <h4 class="g-feature-title">Experienced Team</h4>
+            <p class="g-feature-desc">Skilled professionals with years of expertise in construction.</p>
+          </div>
+        </div>
+
+        <!-- Vertical Divider -->
+        <div class="g-feature-divider"></div>
+
+        <!-- Feature 3 -->
+        <div class="gallery-feature-item">
+          <div class="g-feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="g-feature-svg">
+              <rect x="3" y="11" width="18" height="10" rx="2" />
+              <path d="M12 2v9M7 5l5-3 5 3M12 11h.01" />
+            </svg>
+          </div>
+          <div class="g-feature-text-stack">
+            <h4 class="g-feature-title">On-Time Delivery</h4>
+            <p class="g-feature-desc">We value your time and ensure projects are delivered on schedule.</p>
+          </div>
+        </div>
+
+        <!-- Vertical Divider -->
+        <div class="g-feature-divider"></div>
+
+        <!-- Feature 4 -->
+        <div class="gallery-feature-item">
+          <div class="g-feature-icon-wrapper">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="g-feature-svg">
+              <path d="M3 21h18M9 21V9a3 3 0 0 1 6 0v12M9 13h6M9 17h6" />
+            </svg>
+          </div>
+          <div class="g-feature-text-stack">
+            <h4 class="g-feature-title">Client Satisfaction</h4>
+            <p class="g-feature-desc">Our clients' trust and satisfaction are the foundation of our success.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section class="why-choose-us-section" id="about">
+    <div class="why-choose-us-container">
+
+      <!-- Section Header -->
+      <div class="why-header">
+        <div class="why-subtitle-wrapper">
+          <span class="why-subtitle-line-left"></span>
+          <div class="why-subtitle-icon">
+            <svg class="why-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="20,80 40,80 40,30 20,40" fill="currentColor" />
+              <polygon points="45,80 65,80 65,15 45,25" fill="currentColor" />
+              <polygon points="70,80 90,80 90,45 70,55" fill="currentColor" />
+            </svg>
+          </div>
+          <span class="why-subtitle-text">WHY CHOOSE US</span>
+          <span class="why-subtitle-line-right"></span>
+        </div>
+        <h2 class="why-heading">
+          Building Better. <span class="serif-green">Together.</span>
+        </h2>
+        <div class="why-heading-separator">
+          <span class="separator-line"></span>
+          <span class="separator-dot"></span>
+          <span class="separator-line"></span>
+        </div>
+        <p class="why-description">
+          We combine creativity, technology and expertise to deliver exceptional construction and design solutions.
+        </p>
+      </div>
+
+      <!-- Main Layout Grid: 3 columns -->
+      <div class="why-layout-grid">
+
+        <!-- Left Column: Features -->
+        <div class="why-features-column why-left-column">
+          <!-- Feature 1: Advanced Technology -->
+          <div class="why-feature-card">
+            <div class="why-feature-icon-box">
+              <!-- Technology Icon (Gear/Circuit) -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="why-icon-svg">
+                <circle cx="12" cy="12" r="3" />
+                <path
+                  d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+              </svg>
+            </div>
+            <div class="why-feature-text">
+              <h3 class="why-feature-title">Advanced Technology</h3>
+              <p class="why-feature-desc">We use the latest tools and technology to deliver precise and innovative
+                solutions.</p>
+            </div>
+          </div>
+
+          <!-- Feature 2: Smart Planning -->
+          <div class="why-feature-card">
+            <div class="why-feature-icon-box">
+              <!-- Planning Icon (Clipboard/Pen) -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="why-icon-svg">
+                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+                <rect x="8" y="2" width="8" height="4" rx="1" ry="1" />
+                <path d="M9 12h6M9 16h4" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div class="why-feature-text">
+              <h3 class="why-feature-title">Smart Planning</h3>
+              <p class="why-feature-desc">Our planning is detail-oriented and carefully structured to ensure smooth
+                execution.</p>
+            </div>
+          </div>
+
+          <!-- Feature 3: Proven Results -->
+          <div class="why-feature-card">
+            <div class="why-feature-icon-box">
+              <!-- Proven Results Icon (Chart/Upward) -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="why-icon-svg">
+                <line x1="18" y1="20" x2="18" y2="10" />
+                <line x1="12" y1="20" x2="12" y2="4" />
+                <line x1="6" y1="20" x2="6" y2="14" />
+                <path d="M2 20h20" />
+              </svg>
+            </div>
+            <div class="why-feature-text">
+              <h3 class="why-feature-title">Proven Results</h3>
+              <p class="why-feature-desc">We are committed to delivering quality results that exceed expectations.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Center Column: Visual Graphic & Man Image -->
+        <div class="why-visual-column">
+          <!-- Concentric Background Circle Graphics -->
+          <div class="why-circle-bg">
+            <!-- Green Solid Circle Background -->
+            <div class="why-green-badge-bg"></div>
+
+            <!-- Faint architectural wireframe overlay -->
+            <div class="why-wireframe-overlay">
+              <svg viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M120 320 V 180 L 200 110 L 280 180 V 320 Z" stroke="currentColor" stroke-width="1.2" />
+                <path d="M 120 180 H 280" stroke="currentColor" stroke-width="1.2" />
+                <path d="M 200 110 V 320" stroke="currentColor" stroke-dasharray="3 3" stroke-width="1" />
+                <rect x="140" y="220" width="40" height="100" stroke="currentColor" stroke-width="1" />
+                <rect x="220" y="210" width="40" height="50" stroke="currentColor" stroke-width="1" />
+              </svg>
+            </div>
+
+            <!-- Concentric dotted circular lines -->
+            <div class="why-dotted-circle-outer"></div>
+            <div class="why-dotted-circle-inner"></div>
+
+            <!-- Small solid green dots positioned on the outer dotted circle -->
+            <div class="why-dot dot-1"></div>
+            <div class="why-dot dot-2"></div>
+            <div class="why-dot dot-3"></div>
+            <div class="why-dot dot-4"></div>
+            <div class="why-dot dot-5"></div>
+          </div>
+
+          <!-- Foreground Man Image -->
+          <img src="assets/why choose us.png" alt="Nexora construction manager" class="why-man-img">
+        </div>
+
+        <!-- Right Column: Features -->
+        <div class="why-features-column why-right-column">
+          <!-- Feature 1: Trusted by Clients -->
+          <div class="why-feature-card">
+            <div class="why-feature-icon-box">
+              <!-- Shield/Check Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="why-icon-svg">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <polyline points="9 11 11 13 15 9" />
+              </svg>
+            </div>
+            <div class="why-feature-text">
+              <h3 class="why-feature-title">Trusted by Clients</h3>
+              <p class="why-feature-desc">Our clients trust us for our transparency, reliability and commitment to
+                quality.</p>
+            </div>
+          </div>
+
+          <!-- Feature 2: Expert Team -->
+          <div class="why-feature-card">
+            <div class="why-feature-icon-box">
+              <!-- Team Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="why-icon-svg">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <div class="why-feature-text">
+              <h3 class="why-feature-title">Expert Team</h3>
+              <p class="why-feature-desc">Our skilled professionals bring experience, dedication and creativity to every
+                project.</p>
+            </div>
+          </div>
+
+          <!-- Feature 3: Cost Efficiency -->
+          <div class="why-feature-card">
+            <div class="why-feature-icon-box">
+              <!-- Dollar/Hand Icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="why-icon-svg">
+                <rect x="2" y="6" width="20" height="12" rx="2" />
+                <circle cx="12" cy="12" r="3" />
+                <line x1="6" y1="12" x2="6" y2="12" />
+                <line x1="18" y1="12" x2="18" y2="12" />
+              </svg>
+            </div>
+            <div class="why-feature-text">
+              <h3 class="why-feature-title">Cost Efficiency</h3>
+              <p class="why-feature-desc">We optimize resources and processes to deliver the best value for your
+                investment.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Testimonials & Brands Section -->
+  <section class="testimonials-section" id="testimonials">
+    <div class="testimonials-container">
+
+      <!-- Section Header -->
+      <div class="testimonials-header-row">
+
+        <!-- Left Side: Section Titles -->
+        <div class="testimonials-left-col">
+          <div class="testimonials-top-subtitle">
+            <span class="testimonials-subtitle-text">TESTIMONIALS</span>
+            <div class="testimonials-subtitle-line"></div>
+          </div>
+          <h2 class="testimonials-heading">What Our <span class="testimonials-highlight">Clients</span> Say</h2>
+          <p class="testimonials-description">
+            We take pride in delivering exceptional results. Here's what our clients have to say about working with us.
+          </p>
+        </div>
+
+        <!-- Right Side: Highlight Quote Box -->
+        <div class="testimonials-right-col">
+          <div class="testimonials-quote-badge">
+            <span class="quote-symbol">“</span>
+          </div>
+          <div class="testimonials-intro-quote-text">
+            Great architecture is about more than design – it's about <span class="quote-highlight-word">trust,
+              collaboration</span> and <span class="quote-highlight-word">lasting impact.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Testimonial Cards Grid -->
+      <div class="testimonials-grid">
+
+        <!-- Card 1: Rohit Sharma -->
+        <div class="testimonial-card">
+          <div class="testimonial-card-inner">
+            <!-- Slanted Image Frame -->
+            <div class="testimonial-img-box">
+              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80"
+                alt="Modern Villa in Coimbatore" class="testimonial-property-img">
+              <!-- Star Review Badge -->
+              <div class="testimonial-stars-badge">
+                <span class="stars-text">★★★★★</span>
+              </div>
+            </div>
+            <!-- Testimonial content -->
+            <div class="testimonial-content-box">
+              <div class="testimonial-quote-icon">”</div>
+              <p class="testimonial-text">
+                The team exceeded our expectations with their professionalism and attention to detail. The final result
+                is outstanding!
+              </p>
+
+              <!-- Author details -->
+              <div class="testimonial-author-box">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80"
+                  alt="Rohit Sharma" class="testimonial-avatar">
+                <div class="testimonial-author-details">
+                  <h4 class="testimonial-author-name">Rohit Sharma</h4>
+                  <p class="testimonial-author-meta">Homeowner, Coimbatore</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Priya Menon -->
+        <div class="testimonial-card">
+          <div class="testimonial-card-inner">
+            <!-- Slanted Image Frame -->
+            <div class="testimonial-img-box">
+              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=600&q=80"
+                alt="Corporate Villa in Bangalore" class="testimonial-property-img">
+              <!-- Star Review Badge -->
+              <div class="testimonial-stars-badge">
+                <span class="stars-text">★★★★★</span>
+              </div>
+            </div>
+            <!-- Testimonial content -->
+            <div class="testimonial-content-box">
+              <div class="testimonial-quote-icon">”</div>
+              <p class="testimonial-text">
+                A seamless experience from planning to completion. Their commitment to quality and timelines is truly
+                commendable.
+              </p>
+
+              <!-- Author details -->
+              <div class="testimonial-author-box">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80"
+                  alt="Priya Menon" class="testimonial-avatar">
+                <div class="testimonial-author-details">
+                  <h4 class="testimonial-author-name">Priya Menon</h4>
+                  <p class="testimonial-author-meta">Business Owner, Bangalore</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Arun Prakash -->
+        <div class="testimonial-card">
+          <div class="testimonial-card-inner">
+            <!-- Slanted Image Frame -->
+            <div class="testimonial-img-box">
+              <img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=600&q=80"
+                alt="Luxury Interior in Chennai" class="testimonial-property-img">
+              <!-- Star Review Badge -->
+              <div class="testimonial-stars-badge">
+                <span class="stars-text">★★★★★</span>
+              </div>
+            </div>
+            <!-- Testimonial content -->
+            <div class="testimonial-content-box">
+              <div class="testimonial-quote-icon">”</div>
+              <p class="testimonial-text">
+                Reliable, transparent, and highly skilled team. They turned our vision into a beautiful reality.
+              </p>
+
+              <!-- Author details -->
+              <div class="testimonial-author-box">
+                <img
+                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80"
+                  alt="Arun Prakash" class="testimonial-avatar">
+                <div class="testimonial-author-details">
+                  <h4 class="testimonial-author-name">Arun Prakash</h4>
+                  <p class="testimonial-author-meta">Architect, Chennai</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Testimonials Navigation and Pagination -->
+      <div class="testimonials-controls">
+        <button class="testimonial-nav-btn prev-btn" id="prev-testimonial" aria-label="Previous Testimonial">
+          <svg class="nav-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+        
+        <div class="testimonials-pagination">
+          <span class="pagination-dot"></span>
+          <span class="pagination-dot"></span>
+          <span class="pagination-dot"></span>
+        </div>
+
+        <button class="testimonial-nav-btn next-btn" id="next-testimonial" aria-label="Next Testimonial">
+          <svg class="nav-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </div>
+
+
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="contact-container">
+      
+      <!-- Contact Info / Form Container (Left half) -->
+      <div class="contact-info-column">
+        <div class="contact-subtitle-wrapper">
+          <div class="subtitle-diamond">♦</div>
+          <span class="contact-subtitle-text">CONTACT US</span>
+        </div>
+        <h2 class="contact-heading">
+          HAVE A PROJECT<br>IN MIND?<br><span class="serif-green">LET'S BUILD IT TOGETHER</span>
+        </h2>
+        <p class="contact-description">
+          Whether it's a small renovation or a large-scale construction, we're here to bring your vision to life with quality and precision.
+        </p>
+
+        <!-- 2x2 Grid of details -->
+        <div class="contact-details-grid">
+          <!-- Card 1: Our Location -->
+          <div class="contact-detail-card">
+            <div class="contact-detail-icon-box">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4 class="contact-detail-title">OUR LOCATION</h4>
+              <p class="contact-detail-desc">123, Green Street, Coimbatore, Tamil Nadu - 641001</p>
+            </div>
+          </div>
+
+          <!-- Card 2: Phone Number -->
+          <div class="contact-detail-card">
+            <div class="contact-detail-icon-box">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4 class="contact-detail-title">PHONE NUMBER</h4>
+              <p class="contact-detail-desc">+91 12345 67890<br>+91 98765 43210</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Email Address -->
+          <div class="contact-detail-card">
+            <div class="contact-detail-icon-box">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4 class="contact-detail-title">EMAIL ADDRESS</h4>
+              <p class="contact-detail-desc">info@jvconstruction.com<br>support@jvconstruction.com</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Get Connected -->
+          <div class="contact-detail-card">
+            <div class="contact-detail-icon-box">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="18" cy="5" r="3"></circle>
+                <circle cx="6" cy="12" r="3"></circle>
+                <circle cx="18" cy="19" r="3"></circle>
+                <line x1="8.59" y1="13.51" x2="17.42" y2="17.49"></line>
+                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+              </svg>
+            </div>
+            <div class="contact-detail-text">
+              <h4 class="contact-detail-title">GET CONNECTED</h4>
+              <div class="contact-social-row">
+                <a href="#" class="contact-social-btn" aria-label="Facebook">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                </a>
+                <a href="#" class="contact-social-btn" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <a href="#" class="contact-social-btn" aria-label="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+                <a href="#" class="contact-social-btn" aria-label="YouTube">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.163c-.272-1.022-1.074-1.826-2.099-2.099C19.537 3.5 12 3.5 12 3.5s-7.537 0-9.399.564C1.576 4.337.774 5.14.502 6.163.003 8.07 0 12 0 12s.003 3.93.502 5.837c.272 1.022 1.074 1.826 2.099 2.099C4.463 20.5 12 20.5 12 20.5s7.537 0 9.399-.564c1.025-.273 1.827-1.077 2.099-2.099.5-1.907.502-5.837.502-5.837s-.002-3.93-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D Canvas Column (Right half) -->
+      <div class="contact-3d-column">
+        <!-- Curved Background Mask container -->
+        <div class="contact-3d-bg-mask"></div>
+        
+        <!-- Canvas for Three.js -->
+        <div class="threejs-container" id="house-3d-container">
+          <canvas id="threejs-canvas"></canvas>
+          <!-- Loading state overlay -->
+          <div class="threejs-loader-overlay" id="threejs-loader">
+            <div class="threejs-spinner"></div>
+            <p class="threejs-loading-text">Loading 3D House Model...</p>
+          </div>
+        </div>
+
+        <!-- Green quotation badge banner -->
+        <div class="contact-quote-banner">
+          <div class="quote-banner-icon">“</div>
+          <div class="quote-banner-text">
+            <p class="quote-main-text">Building more than structures,</p>
+            <p class="quote-sub-text">we build trust.</p>
+            <div class="quote-banner-line"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      
+      <!-- Top Row -->
+      <div class="footer-top-row">
+        <!-- Brand Column -->
+        <div class="footer-brand-column">
+          <div class="footer-logo-wrapper">
+            <svg class="footer-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="20,80 40,80 40,30 20,40" fill="currentColor" />
+              <polygon points="45,80 65,80 65,15 45,25" fill="currentColor" />
+              <polygon points="70,80 90,80 90,45 70,55" fill="currentColor" />
+            </svg>
+            <div class="footer-logo-text">
+              <span class="logo-name-top">JV CONSTRUCTION</span>
+              <span class="logo-motto-bottom">BUILDING DREAMS</span>
+            </div>
+          </div>
+          <p class="footer-brand-description">
+            We build spaces that inspire and stand the test of time. Quality, integrity and innovation in every step.
+          </p>
+        </div>
+
+        <!-- Why Choose Us Badges Column -->
+        <div class="footer-badges-column">
+          <h4 class="footer-column-title">WHY CHOOSE US?</h4>
+          <div class="footer-badges-row">
+            <!-- Badge 1: Quality Construction -->
+            <div class="footer-badge-item">
+              <div class="footer-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                </svg>
+              </div>
+              <span class="footer-badge-text">QUALITY<br>CONSTRUCTION</span>
+            </div>
+            <!-- Badge 2: On Time Delivery -->
+            <div class="footer-badge-item">
+              <div class="footer-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <span class="footer-badge-text">ON TIME<br>DELIVERY</span>
+            </div>
+            <!-- Badge 3: Expert Team -->
+            <div class="footer-badge-item">
+              <div class="footer-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                </svg>
+              </div>
+              <span class="footer-badge-text">EXPERT<br>TEAM</span>
+            </div>
+            <!-- Badge 4: Client Satisfaction -->
+            <div class="footer-badge-item">
+              <div class="footer-badge-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                </svg>
+              </div>
+              <span class="footer-badge-text">CLIENT<br>SATISFACTION</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stay Updated Newsletter Column -->
+        <div class="footer-newsletter-column">
+          <h4 class="footer-column-title">STAY UPDATED</h4>
+          <p class="footer-newsletter-desc">
+            Subscribe to our newsletter for the latest updates and project insights.
+          </p>
+          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+            <input type="email" class="footer-newsletter-input" placeholder="Enter your email" required aria-label="Newsletter Email Input">
+            <button type="submit" class="footer-newsletter-submit-btn" aria-label="Subscribe to Newsletter">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"/>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="footer-divider"></div>
+
+      <!-- Bottom Row -->
+      <div class="footer-bottom-row">
+        <span class="footer-copyright">© 2025 JV Construction. All Rights Reserved.</span>
+        <div class="footer-bottom-links">
+          <a href="#" class="footer-bottom-link">Privacy Policy</a>
+          <span class="footer-bottom-link-separator">|</span>
+          <a href="#" class="footer-bottom-link">Terms of Service</a>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Showreel Video Modal -->
+  <div class="video-modal-overlay" id="video-modal" aria-hidden="true" role="dialog">
+    <div class="modal-content">
+      <button class="close-modal" id="close-video-btn" aria-label="Close Showreel Modal">&times;</button>
+      <div class="video-ratio-box">
+        <!-- Embed standard premium drone construction video (Vimeo loop/showreel) -->
+        <iframe id="showreel-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Interaction File -->
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>
