@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
 
 /* ==========================================================================
    NEXORA CONSTRUCTIONS - PREMIUM INTERACTIONS & DYNAMIC ANIMATIONS
@@ -329,9 +330,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // D. GLB Model Loading
     const loader = new GLTFLoader();
+    loader.setMeshoptDecoder(MeshoptDecoder);
     
     loader.load(
-      'models/modern_house.glb',
+      'models/modern_house-optimized.glb',
       (gltf) => {
         houseModel = gltf.scene;
         
