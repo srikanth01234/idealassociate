@@ -65,7 +65,8 @@ body {
 
 /* Isolating wrapper to display Hero elements in exactly 1 viewport height screen */
 .hero-screen-wrapper {
-  position: relative;
+  position: sticky;
+  top: 0;
   height: 100vh;
   min-height: 100vh;
   display: flex;
@@ -109,7 +110,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(5%) brightness(65%);
   z-index: 1;
 }
 
@@ -121,7 +121,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 35% 45%, rgba(7, 9, 13, 0.25) 0%, rgba(7, 9, 13, 0.65) 75%);
+  background: radial-gradient(circle at 35% 45%, rgba(7, 9, 13, 0.45) 0%, rgba(7, 9, 13, 0.8) 75%);
   z-index: 2;
 }
 
@@ -147,106 +147,195 @@ body {
   }
 }
 
-/* 4. MAIN HEADER */
+/* 4. MAIN HEADER - MODERN CAPSULE DESIGN */
 .main-header {
-  position: relative;
-  z-index: 10;
-  height: var(--header-height);
+  position: fixed;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1400px;
+  height: 80px;
+  /* Fixed height for the capsule */
+  background: rgba(10, 12, 16, 0.4);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  padding: 0 25px 0 0 !important;
+  /* Flush to the left, padding on the right */
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 5rem;
-  background: linear-gradient(to bottom, rgba(7, 9, 13, 0.8) 0%, rgba(7, 9, 13, 0) 100%);
+  overflow: hidden;
+  /* Clips the left logo block to the capsule border radius */
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.logo-container {
+/* Scrolled state for the header */
+.main-header.scrolled {
+  background: rgba(10, 12, 16, 0.85);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Hidden state when scrolling down */
+.main-header.header-hidden {
+  transform: translate(-50%, -150%) scale(0.95);
+  /* Slide up and shrink slightly */
+  opacity: 0;
+  /* Fade out */
+  pointer-events: none;
+  /* Disable interactions when hidden */
+}
+
+/* Logo Block with White Background and Curve Divider */
+.logo-block {
+  position: relative;
   display: flex;
   align-items: center;
+  background: #ffffff;
+  height: 100%;
+  padding: 0 15px 0 35px;
+  margin-right: 35px;
+  /* Leave space for the curve divider */
 }
 
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
   text-decoration: none;
-  color: var(--text-light);
-  transition: transform 0.3s ease;
 }
 
-.logo:hover {
-  transform: translateY(-1px);
-}
-
-.logo-icon {
-  width: 44px;
-  height: 44px;
-  filter: drop-shadow(0 2px 8px rgba(255, 207, 41, 0.2));
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.brand-name {
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: 4px;
-  color: var(--text-light);
-  line-height: 1.1;
-}
-
-.brand-sub {
-  font-size: 0.62rem;
-  font-weight: 500;
-  letter-spacing: 5px;
-  color: var(--text-muted);
-  margin-top: 0.1rem;
-}
-
-/* Navigation links (Desktop) */
-.nav-bar {
+.logo-img {
+  height: 50px;
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
   display: block;
+}
+
+.logo-curve-divider {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  height: 100%;
+  width: 40px;
+  /* Width of the curve */
+  z-index: 1;
+}
+
+.logo-curve-divider svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Navigation Menu */
+.nav-bar {
+  display: flex;
+  align-items: center;
 }
 
 .nav-links {
   display: flex;
-  align-items: center;
-  gap: 2.8rem;
   list-style: none;
+  gap: 2.2rem;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-item {
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 3px;
+  color: #ffffff;
   text-decoration: none;
-  color: var(--text-muted);
-  transition: color 0.3s ease, text-shadow 0.3s ease;
-  position: relative;
-  padding: 0.5rem 0;
-}
-
-.nav-item::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 1.5px;
-  background-color: var(--gold-bright);
-  transition: width 0.3s ease, left 0.3s ease;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
 }
 
 .nav-item:hover {
-  color: var(--text-light);
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+  color: #5c8749;
+  /* Green hover */
 }
 
-.nav-item:hover::after {
-  width: 100%;
-  left: 0;
+/* Active Link State */
+.nav-item.active {
+  color: #5c8749;
+  position: relative;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  background-color: #5c8749;
+  border-radius: 2px;
+}
+
+/* Header Right Area */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-separator {
+  width: 1px;
+  height: 35px;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Quote Button Styling */
+.quote-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: #5c8749;
+  /* Green color from image */
+  color: #ffffff;
+  text-decoration: none;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 10px 24px 10px 12px;
+  /* Balanced padding */
+  border-radius: 30px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.quote-btn:hover {
+  background-color: #4a6f3b;
+  /* Darker green on hover */
+  transform: translateY(-1px);
+}
+
+.quote-btn-icon-wrapper {
+  width: 32px;
+  height: 32px;
+  background-color: #0f1216;
+  /* Dark background inside button for paper plane */
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.paper-plane-icon {
+  width: 14px;
+  height: 14px;
+  transform: rotate(45deg);
+}
+
+.quote-btn-text {
+  letter-spacing: 0.5px;
 }
 
 /* Hamburger Trigger Button */
@@ -382,6 +471,8 @@ body {
   display: grid;
   grid-template-columns: 120px 1fr 340px;
   padding: 0 5rem;
+  padding-top: 135px !important;
+  /* Space for floating capsule header */
   max-width: 1920px;
   width: 100%;
   margin: 0 auto;
@@ -1269,6 +1360,7 @@ body {
   z-index: 5;
   overflow: hidden;
   border-top: 1px solid rgba(15, 18, 22, 0.05);
+  box-shadow: 0 -20px 40px rgba(0, 0, 0, 0.3);
 }
 
 /* Base Light variables scoped to this section */
@@ -2415,8 +2507,10 @@ body {
 
 .process-section {
   position: relative;
-  background-color: #ffffff; /* White background for the bottom half of the cards */
-  padding: 4rem 5rem 0 5rem; /* No bottom padding so cards sit at the bottom */
+  background-color: #ffffff;
+  /* White background for the bottom half of the cards */
+  padding: 4rem 5rem 0 5rem;
+  /* No bottom padding so cards sit at the bottom */
   z-index: 5;
   overflow: visible;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
@@ -2433,8 +2527,9 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  height: calc(100% - 120px); /* Ends exactly halfway through the cards */
-  background: linear-gradient(rgba(22, 22, 22, 0.88), rgba(22, 22, 22, 0.92)), url('https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat;
+  height: calc(100% - 120px);
+  /* Ends exactly halfway through the cards */
+  background: linear-gradient(rgba(22, 22, 22, 0.88), rgba(22, 22, 22, 0.92)) scroll, url('https://images.unsplash.com/photo-1590069261209-f8e9b8642343?auto=format&fit=crop&w=1920&q=80') center center / cover no-repeat fixed;
   z-index: 1;
 }
 
@@ -2442,7 +2537,8 @@ body {
   max-width: 1520px;
   margin: 0 auto;
   position: relative;
-  z-index: 2; /* Position content above the pseudo-element background */
+  z-index: 2;
+  /* Position content above the pseudo-element background */
 }
 
 /* Header */
@@ -2451,7 +2547,8 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 2.2rem; /* Reduced margin-bottom to make the bg container size more compact */
+  margin-bottom: 2.2rem;
+  /* Reduced margin-bottom to make the bg container size more compact */
 }
 
 .process-subtitle-wrapper {
@@ -2506,7 +2603,8 @@ body {
   gap: 2.2rem;
   /* Increased gap from 1.5rem to give more space between cards */
   position: relative;
-  margin-bottom: 0; /* Reset bottom margin since layout is managed by parent ::before height */
+  margin-bottom: 0;
+  /* Reset bottom margin since layout is managed by parent ::before height */
   z-index: 10;
 }
 
@@ -2514,16 +2612,18 @@ body {
 .process-card {
   position: relative;
   background-color: #ffffff;
-  border: 1px solid rgba(15, 18, 22, 0.12); /* Clean thin border */
+  border: 1px solid rgba(15, 18, 22, 0.12);
+  /* Clean thin border */
   border-radius: 12px;
   padding: 2.6rem 1.1rem 1.8rem 1.1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08); /* More pronounced shadow to pop over white backgrounds */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+  /* More pronounced shadow to pop over white backgrounds */
   transition: transform 0.4s ease, box-shadow 0.4s ease;
-  
+
   /* Reset local variables back to dark colors so text is visible on the white card background */
   --text-dark: #0f1216;
   --text-muted-light: rgba(15, 18, 22, 0.65);
@@ -2653,7 +2753,8 @@ body {
 
 @media (max-width: 1200px) {
   .process-section {
-    padding: 4rem 3.5rem 0 3.5rem; /* Reduced top padding to make the bg container size more compact */
+    padding: 4rem 3.5rem 0 3.5rem;
+    /* Reduced top padding to make the bg container size more compact */
     overflow: visible;
   }
 
@@ -2687,7 +2788,8 @@ body {
   }
 
   .process-section::before {
-    height: 100%; /* Cover full height on mobile stack view */
+    height: 100%;
+    /* Cover full height on mobile stack view */
   }
 
   .process-header {
@@ -2705,7 +2807,8 @@ body {
     gap: 1.5rem;
     max-width: 580px;
     margin: 0 auto;
-    margin-bottom: 0; /* Reset negative bottom margin on mobile stack */
+    margin-bottom: 0;
+    /* Reset negative bottom margin on mobile stack */
     position: relative;
     padding-left: 2.2rem;
     /* Leave room for vertical timeline line */
@@ -2878,7 +2981,8 @@ body {
   position: relative;
   background-color: #ffffff;
   /* White background to contrast with dark process section */
-  padding: 8rem 5rem; /* Restored normal padding since cards no longer physically overflow this section */
+  padding: 8rem 5rem;
+  /* Restored normal padding since cards no longer physically overflow this section */
   z-index: 4;
   overflow: hidden;
   border-top: 1px solid rgba(15, 18, 22, 0.04);
@@ -3409,7 +3513,8 @@ body {
 /* Laptops */
 @media (max-width: 1200px) {
   .gallery-section {
-    padding: 7rem 3.5rem; /* Restored normal padding */
+    padding: 7rem 3.5rem;
+    /* Restored normal padding */
   }
 
   .gallery-header-row {
@@ -4078,7 +4183,8 @@ body {
   background-color: var(--gold-metallic);
   border-color: var(--gold-metallic);
   box-shadow: 0 20px 45px rgba(21, 103, 53, 0.22);
-  transform: translateY(-5px); /* Raised by default */
+  transform: translateY(-5px);
+  /* Raised by default */
 }
 
 .testimonial-card.active-card:hover {
@@ -4735,11 +4841,13 @@ body {
   transform: translateX(-50%) translateY(-25px);
   z-index: 5;
   width: auto;
-  max-height: 600px; /* Extremely large image height on desktop */
+  max-height: 600px;
+  /* Extremely large image height on desktop */
   object-fit: contain;
   filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.12));
   animation: float-man 5.5s ease-in-out infinite;
-  pointer-events: none; /* Let pointer hover events pass through to card elements below */
+  pointer-events: none;
+  /* Let pointer hover events pass through to card elements below */
 }
 
 /* Animations */
@@ -4875,7 +4983,8 @@ body {
   }
 
   .why-man-img {
-    max-height: 480px; /* Large image size on laptop screen */
+    max-height: 480px;
+    /* Large image size on laptop screen */
     max-width: none;
     width: auto;
   }
@@ -4980,7 +5089,8 @@ body {
   }
 
   .why-man-img {
-    max-height: 380px; /* Large image size on tablet screen */
+    max-height: 380px;
+    /* Large image size on tablet screen */
     max-width: none;
     width: auto;
   }
@@ -5063,7 +5173,8 @@ body {
   }
 
   .why-man-img {
-    max-height: 320px; /* Large image size on mobile phone screen */
+    max-height: 320px;
+    /* Large image size on mobile phone screen */
     max-width: none;
     width: auto;
   }
@@ -5085,7 +5196,8 @@ body {
   max-width: 1520px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr; /* Left details, Right 3D Model */
+  grid-template-columns: 1.05fr 0.95fr;
+  /* Left details, Right 3D Model */
   gap: 5rem;
   align-items: center;
 }
@@ -5227,7 +5339,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 12; /* Elevated to sit on top of surrounding layout panels */
+  z-index: 12;
+  /* Elevated to sit on top of surrounding layout panels */
 }
 
 .contact-3d-bg-mask {
@@ -5237,7 +5350,8 @@ body {
   right: -200px;
   width: 120%;
   background-color: #ffffff;
-  border-radius: 260px 0 0 260px; /* Beautiful curved wing */
+  border-radius: 260px 0 0 260px;
+  /* Beautiful curved wing */
   z-index: 1;
   box-shadow: -15px 0 35px rgba(0, 0, 0, 0.02);
 }
@@ -5246,7 +5360,8 @@ body {
   position: relative;
   width: 100%;
   height: 100%;
-  z-index: 15; /* Sits above the background mask */
+  z-index: 15;
+  /* Sits above the background mask */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5305,8 +5420,10 @@ body {
   background-color: var(--gold-metallic);
   color: #ffffff;
   padding: 1.6rem 2.4rem;
-  border-radius: 40px 0 0 0; /* Curved top-left corner */
-  z-index: 20; /* High z-index to overlay on top of 3D canvas and mask */
+  border-radius: 40px 0 0 0;
+  /* Curved top-left corner */
+  z-index: 20;
+  /* High z-index to overlay on top of 3D canvas and mask */
   display: flex;
   gap: 1.2rem;
   align-items: flex-start;
@@ -5383,10 +5500,12 @@ body {
   margin-bottom: 1.4rem;
 }
 
-.footer-logo-icon {
-  width: 36px;
-  height: 36px;
-  color: var(--gold-metallic);
+.footer-logo-img {
+  height: 60px;
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
+  display: block;
 }
 
 .footer-logo-text {
@@ -5652,7 +5771,8 @@ body {
     bottom: 0;
     right: 0;
     width: 100%;
-    border-radius: 120px 120px 0 0; /* Top curve only */
+    border-radius: 120px 120px 0 0;
+    /* Top curve only */
   }
 
   .contact-quote-banner {
@@ -5766,5 +5886,50 @@ body {
     flex-direction: column;
     gap: 1rem;
     text-align: center;
+  }
+}
+
+/* --- Redesigned Floating Header Responsiveness --- */
+@media (min-width: 1101px) {
+  .menu-toggle {
+    display: none !important;
+  }
+}
+
+/* Intermediate screens: prevent menu item overflow */
+@media (max-width: 1300px) and (min-width: 1101px) {
+  .nav-links {
+    gap: 1.2rem;
+  }
+
+  .nav-item {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 1100px) {
+  .header-right {
+    display: none !important;
+  }
+
+  .main-header {
+    width: 95%;
+    height: 70px;
+    top: 15px;
+    padding: 0 15px 0 0 !important;
+    border-radius: 35px;
+  }
+
+  .logo-block {
+    padding: 0 10px 0 20px;
+    margin-right: 20px;
+  }
+
+  .logo-img {
+    height: 38px;
+  }
+
+  .logo-curve-divider {
+    width: 30px;
   }
 }

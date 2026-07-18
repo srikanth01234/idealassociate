@@ -31,6 +31,68 @@
 
 <body>
 
+  <!-- Header Section -->
+  <header class="main-header">
+    <!-- Brand Logo Block with S-Curve Divider -->
+    <div class="logo-block">
+      <a href="#" class="logo" id="header-logo" aria-label="JV Construction Home">
+        <img class="logo-img" src="assets/Logo.png" alt="JV Construction Logo" />
+      </a>
+      <div class="logo-curve-divider">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M 0,0 C 40,0 30,100 100,100 L 0,100 Z" fill="#ffffff" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Navigation Menu (Desktop) -->
+    <nav class="nav-bar">
+      <ul class="nav-links">
+        <li><a href="#" class="nav-item active">Home</a></li>
+        <li><a href="#about" class="nav-item">About Us</a></li>
+        <li><a href="#services" class="nav-item">Services</a></li>
+        <li><a href="#gallery" class="nav-item">Projects</a></li>
+        <li><a href="#contact" class="nav-item">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Right Column: Separator and CTA Button -->
+    <div class="header-right">
+      <div class="header-separator"></div>
+      <a href="#contact" class="quote-btn">
+        <span class="quote-btn-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="paper-plane-icon">
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="quote-btn-text">Get a Quote</span>
+      </a>
+    </div>
+
+    <!-- Mobile Hamburger Menu Trigger -->
+    <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+      <span class="menu-label">MENU</span>
+      <div class="hamburger-icon">
+        <span class="bar bar-top"></span>
+        <span class="bar bar-mid"></span>
+        <span class="bar bar-bot"></span>
+      </div>
+    </button>
+  </header>
+
+  <!-- Mobile Overlay Menu (Initially Hidden) -->
+  <div class="mobile-menu-overlay" id="mobile-menu">
+    <button class="close-mobile-menu" id="close-mobile-menu-btn" aria-label="Close Menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="#" class="mobile-nav-item">Home</a></li>
+      <li><a href="#about" class="mobile-nav-item">About Us</a></li>
+      <li><a href="#services" class="mobile-nav-item">Services</a></li>
+      <li><a href="#gallery" class="mobile-nav-item">Projects</a></li>
+      <li><a href="#contact" class="mobile-nav-item">Contact Us</a></li>
+    </ul>
+  </div>
+
   <!-- Screen Wrapper to contain Hero Section and its specific Background video/overlay -->
   <div class="hero-screen-wrapper">
 
@@ -40,60 +102,6 @@
       <video class="bg-video" autoplay muted loop playsinline>
         <source src="assets/hero_video.mp4" type="video/mp4">
       </video>
-    </div>
-
-    <!-- Header Section -->
-    <header class="main-header">
-      <!-- Brand Logo -->
-      <div class="logo-container">
-        <a href="#" class="logo" id="header-logo" aria-label="Nexora Constructions Home">
-          <svg class="logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Geometric building blocks mimicking the luxury Nexora design -->
-            <polygon points="20,80 40,80 40,30 20,40" fill="rgba(21, 103, 53, 0.7)" />
-            <polygon points="45,80 65,80 65,15 45,25" fill="rgba(21, 103, 53, 1)" />
-            <polygon points="70,80 90,80 90,45 70,55" fill="rgba(21, 103, 53, 0.5)" />
-          </svg>
-          <div class="logo-text">
-            <span class="brand-name">NEXORA</span>
-            <span class="brand-sub">CONSTRUCTIONS</span>
-          </div>
-        </a>
-      </div>
-
-      <!-- Navigation Menu (Desktop) -->
-      <nav class="nav-bar">
-        <ul class="nav-links">
-          <li><a href="#about" class="nav-item">ABOUT</a></li>
-          <li><a href="#services" class="nav-item">SERVICES</a></li>
-          <li><a href="#projects" class="nav-item">PROJECTS</a></li>
-          <li><a href="#process" class="nav-item">PROCESS</a></li>
-          <li><a href="#company" class="nav-item">COMPANY</a></li>
-          <li><a href="#contact" class="nav-item">CONTACT</a></li>
-        </ul>
-      </nav>
-
-      <!-- Mobile Hamburger Menu Trigger -->
-      <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
-        <span class="menu-label">MENU</span>
-        <div class="hamburger-icon">
-          <span class="bar bar-top"></span>
-          <span class="bar bar-mid"></span>
-          <span class="bar bar-bot"></span>
-        </div>
-      </button>
-    </header>
-
-    <!-- Mobile Overlay Menu (Initially Hidden) -->
-    <div class="mobile-menu-overlay" id="mobile-menu">
-      <button class="close-mobile-menu" id="close-mobile-menu-btn" aria-label="Close Menu">&times;</button>
-      <ul class="mobile-nav-links">
-        <li><a href="#about" class="mobile-nav-item">ABOUT</a></li>
-        <li><a href="#services" class="mobile-nav-item">SERVICES</a></li>
-        <li><a href="#projects" class="mobile-nav-item">PROJECTS</a></li>
-        <li><a href="#process" class="mobile-nav-item">PROCESS</a></li>
-        <li><a href="#company" class="mobile-nav-item">COMPANY</a></li>
-        <li><a href="#contact" class="mobile-nav-item">CONTACT</a></li>
-      </ul>
     </div>
 
     <!-- Hero Content Grid -->
@@ -1299,7 +1307,7 @@
             <polyline points="15 18 9 12 15 6"></polyline>
           </svg>
         </button>
-        
+
         <div class="testimonials-pagination">
           <span class="pagination-dot"></span>
           <span class="pagination-dot"></span>
@@ -1321,7 +1329,7 @@
   <!-- Contact Section -->
   <section class="contact-section" id="contact">
     <div class="contact-container">
-      
+
       <!-- Contact Info / Form Container (Left half) -->
       <div class="contact-info-column">
         <div class="contact-subtitle-wrapper">
@@ -1332,7 +1340,8 @@
           HAVE A PROJECT<br>IN MIND?<br><span class="serif-green">LET'S BUILD IT TOGETHER</span>
         </h2>
         <p class="contact-description">
-          Whether it's a small renovation or a large-scale construction, we're here to bring your vision to life with quality and precision.
+          Whether it's a small renovation or a large-scale construction, we're here to bring your vision to life with
+          quality and precision.
         </p>
 
         <!-- 2x2 Grid of details -->
@@ -1340,7 +1349,8 @@
           <!-- Card 1: Our Location -->
           <div class="contact-detail-card">
             <div class="contact-detail-icon-box">
-              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                 <circle cx="12" cy="10" r="3"></circle>
               </svg>
@@ -1354,8 +1364,11 @@
           <!-- Card 2: Phone Number -->
           <div class="contact-detail-card">
             <div class="contact-detail-icon-box">
-              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
+                </path>
               </svg>
             </div>
             <div class="contact-detail-text">
@@ -1367,7 +1380,8 @@
           <!-- Card 3: Email Address -->
           <div class="contact-detail-card">
             <div class="contact-detail-icon-box">
-              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
               </svg>
@@ -1381,7 +1395,8 @@
           <!-- Card 4: Get Connected -->
           <div class="contact-detail-card">
             <div class="contact-detail-icon-box">
-              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg class="contact-detail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
                 <circle cx="18" cy="5" r="3"></circle>
                 <circle cx="6" cy="12" r="3"></circle>
                 <circle cx="18" cy="19" r="3"></circle>
@@ -1393,16 +1408,30 @@
               <h4 class="contact-detail-title">GET CONNECTED</h4>
               <div class="contact-social-row">
                 <a href="#" class="contact-social-btn" aria-label="Facebook">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+                  </svg>
                 </a>
                 <a href="#" class="contact-social-btn" aria-label="Instagram">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                  </svg>
                 </a>
                 <a href="#" class="contact-social-btn" aria-label="LinkedIn">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                  </svg>
                 </a>
                 <a href="#" class="contact-social-btn" aria-label="YouTube">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.163c-.272-1.022-1.074-1.826-2.099-2.099C19.537 3.5 12 3.5 12 3.5s-7.537 0-9.399.564C1.576 4.337.774 5.14.502 6.163.003 8.07 0 12 0 12s.003 3.93.502 5.837c.272 1.022 1.074 1.826 2.099 2.099C4.463 20.5 12 20.5 12 20.5s7.537 0 9.399-.564c1.025-.273 1.827-1.077 2.099-2.099.5-1.907.502-5.837.502-5.837s-.002-3.93-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M23.498 6.163c-.272-1.022-1.074-1.826-2.099-2.099C19.537 3.5 12 3.5 12 3.5s-7.537 0-9.399.564C1.576 4.337.774 5.14.502 6.163.003 8.07 0 12 0 12s.003 3.93.502 5.837c.272 1.022 1.074 1.826 2.099 2.099C4.463 20.5 12 20.5 12 20.5s7.537 0 9.399-.564c1.025-.273 1.827-1.077 2.099-2.099.5-1.907.502-5.837.502-5.837s-.002-3.93-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                  </svg>
                 </a>
               </div>
             </div>
@@ -1414,7 +1443,7 @@
       <div class="contact-3d-column">
         <!-- Curved Background Mask container -->
         <div class="contact-3d-bg-mask"></div>
-        
+
         <!-- Canvas for Three.js -->
         <div class="threejs-container" id="house-3d-container">
           <canvas id="threejs-canvas"></canvas>
@@ -1442,21 +1471,12 @@
   <!-- Site Footer -->
   <footer class="site-footer">
     <div class="footer-container">
-      
+
       <!-- Top Row -->
       <div class="footer-top-row">
-        <!-- Brand Column -->
         <div class="footer-brand-column">
           <div class="footer-logo-wrapper">
-            <svg class="footer-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-              <polygon points="20,80 40,80 40,30 20,40" fill="currentColor" />
-              <polygon points="45,80 65,80 65,15 45,25" fill="currentColor" />
-              <polygon points="70,80 90,80 90,45 70,55" fill="currentColor" />
-            </svg>
-            <div class="footer-logo-text">
-              <span class="logo-name-top">JV CONSTRUCTION</span>
-              <span class="logo-motto-bottom">BUILDING DREAMS</span>
-            </div>
+            <img class="footer-logo-img" src="assets/Logo.png" alt="JV Construction Logo" />
           </div>
           <p class="footer-brand-description">
             We build spaces that inspire and stand the test of time. Quality, integrity and innovation in every step.
@@ -1470,8 +1490,9 @@
             <!-- Badge 1: Quality Construction -->
             <div class="footer-badge-item">
               <div class="footer-badge-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
               </div>
               <span class="footer-badge-text">QUALITY<br>CONSTRUCTION</span>
@@ -1479,9 +1500,10 @@
             <!-- Badge 2: On Time Delivery -->
             <div class="footer-badge-item">
               <div class="footer-badge-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <polyline points="12 6 12 12 16 14"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
                 </svg>
               </div>
               <span class="footer-badge-text">ON TIME<br>DELIVERY</span>
@@ -1489,8 +1511,10 @@
             <!-- Badge 3: Expert Team -->
             <div class="footer-badge-item">
               <div class="footer-badge-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                 </svg>
               </div>
               <span class="footer-badge-text">EXPERT<br>TEAM</span>
@@ -1498,8 +1522,10 @@
             <!-- Badge 4: Client Satisfaction -->
             <div class="footer-badge-item">
               <div class="footer-badge-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
                 </svg>
               </div>
               <span class="footer-badge-text">CLIENT<br>SATISFACTION</span>
@@ -1514,11 +1540,13 @@
             Subscribe to our newsletter for the latest updates and project insights.
           </p>
           <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
-            <input type="email" class="footer-newsletter-input" placeholder="Enter your email" required aria-label="Newsletter Email Input">
+            <input type="email" class="footer-newsletter-input" placeholder="Enter your email" required
+              aria-label="Newsletter Email Input">
             <button type="submit" class="footer-newsletter-submit-btn" aria-label="Subscribe to Newsletter">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13"/>
-                <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13" />
+                <polygon points="22 2 15 22 11 13 2 9 22 2" />
               </svg>
             </button>
           </form>

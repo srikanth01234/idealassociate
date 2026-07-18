@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const testimonialDots = document.querySelectorAll('.pagination-dot');
   const prevTestimonialBtn = document.getElementById('prev-testimonial');
   const nextTestimonialBtn = document.getElementById('next-testimonial');
-  
+
   let testimonialIndex = 1; // Start with the second card (index 1) as the active/middle card
   let testimonialInterval;
   const autoSwipeDelay = 5000; // 5 seconds: perfect duration to read and transition
@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dirLight.shadow.mapSize.height = 2048;
     dirLight.shadow.camera.near = 0.5;
     dirLight.shadow.camera.far = 40;
-    
+
     // Set orthographic shadow camera bounds to fit a typical house size
     const d = 15;
     dirLight.shadow.camera.left = -d;
@@ -331,19 +331,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // D. GLB Model Loading
     const loader = new GLTFLoader();
     loader.setMeshoptDecoder(MeshoptDecoder);
-    
+
     loader.load(
       'models/modern_house-optimized.glb',
       (gltf) => {
         houseModel = gltf.scene;
-        
+
         // Scale down the model slightly so it fits completely within the section container
         houseModel.scale.set(0.45, 0.45, 0.45);
-        
+
         // Center the loaded GLB model relative to the pivot helper
         const box = new THREE.Box3().setFromObject(houseModel);
         const center = box.getCenter(new THREE.Vector3());
-        
+
         houseModel.position.sub(center);
         // Slightly lower it inside the pivot
         houseModel.position.y -= 0.25;
@@ -353,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (child.isMesh) {
             child.castShadow = true;
             child.receiveShadow = true;
-            
+
             // Premium material tuning for rendering architectural textures
             if (child.material) {
               child.material.roughness = Math.max(child.material.roughness, 0.35);
@@ -394,19 +394,102 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     );
 
-    // E. Scroll Animation Interaction
-    const calculateScrollProgress = () => {
+    let isCanvasVisible = false;
+
+    // E. Viewport Visibility Check
+    const checkCanvasVisibility = () => {
       const rect = threeContainer.getBoundingClientRect();
       const viewHeight = window.innerHeight;
-      
-      if (rect.top < viewHeight && rect.bottom > 0) {
-        // Normalize scroll percentage relative to container visibility inside viewport
-        const progress = (viewHeight - rect.top) / (viewHeight + rect.height);
-        scrollPercentage = Math.max(0, Math.min(1, progress));
+      isCanvasVisible = (rect.top < viewHeight && rect.bottom > 0);
+    };
+
+    window.addEventListener('scroll', checkCanvasVisibility);
+    // Initialize once on load
+    checkCanvasVisibility();
+
+    // H. Hero Section Content Parallax Fade Out
+    const heroContent = document.querySelector('.hero-container .main-content');
+    const leftSidebar = document.querySelector('.left-sidebar');
+    const rightSidebar = document.querySelector('.right-sidebar');
+
+    const handleHeroParallax = () => {
+      const scrollY = window.scrollY;
+      const heroHeight = window.innerHeight;
+
+      if (scrollY <= heroHeight) {
+        // Translate elements upwards at different speeds and fade them out
+        const translateVal = scrollY * 0.45;
+        const opacityVal = 1 - (scrollY / (heroHeight * 0.65));
+
+        if (heroContent) {
+          heroContent.style.transform = `translate3d(0, -${translateVal}px, 0)`;
+          heroContent.style.opacity = Math.max(0, opacityVal);
+        }
+        if (leftSidebar) {
+          leftSidebar.style.transform = `translate3d(0, -${translateVal * 0.5}px, 0)`;
+          leftSidebar.style.opacity = Math.max(0, opacityVal);
+        }
+        if (rightSidebar) {
+          rightSidebar.style.transform = `translate3d(0, -${translateVal * 0.5}px, 0)`;
+          rightSidebar.style.opacity = Math.max(0, opacityVal);
+        }
+      } else {
+        // Reset when scrolled past
+        if (heroContent) {
+          heroContent.style.transform = 'none';
+          heroContent.style.opacity = 0;
+        }
+        if (leftSidebar) {
+          leftSidebar.style.transform = 'none';
+          leftSidebar.style.opacity = 0;
+        }
+        if (rightSidebar) {
+          rightSidebar.style.transform = 'none';
+          rightSidebar.style.opacity = 0;
+        }
       }
     };
+
+    window.addEventListener('scroll', handleHeroParallax);
+    // Initialize on load in case page starts scrolled
+    handleHeroParallax();
+
+    // I. Modern Header Scroll Reveal Effect (Hide on Scroll Down, Show on Scroll Up)
+    let lastScrollY = window.scrollY;
+    const header = document.querySelector('.main-header');
     
-    window.addEventListener('scroll', calculateScrollProgress);
+    const handleHeaderScroll = () => {
+      const currentScrollY = window.scrollY;
+      
+      // Toggle "scrolled" class for background styling
+      if (currentScrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      // Hide on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        header.classList.add('header-hidden');
+      } else {
+        header.classList.remove('header-hidden');
+      }
+      
+      lastScrollY = currentScrollY;
+    };
+    
+    window.addEventListener('scroll', handleHeaderScroll);
+    // Initialize once on load
+    handleHeaderScroll();
+
+    // Desktop Nav Items Active Switcher
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navItems.forEach(nav => nav.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
 
     // F. Resize Event
     window.addEventListener('resize', () => {
@@ -421,24 +504,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const animate = () => {
       requestAnimationFrame(animate);
 
+      // Only perform rendering & update loops if the canvas is visible in the viewport
+      if (!isCanvasVisible) return;
+
       // Smooth controls damping update
       controls.update();
 
       if (housePivot) {
         if (!isUserInteracting) {
-          // 1. Slow, passive auto-rotation base angle
-          baseRotationY += 0.0018;
-
-          // 2. Scroll-based parallax rotation offset
-          const scrollRotationOffset = (scrollPercentage - 0.5) * Math.PI * 0.4;
-
-          // 3. Smooth interpolation (lerp) for auto-rotation and scroll offset (no mouse tilt jitter)
-          const targetY = baseRotationY + scrollRotationOffset;
-          housePivot.rotation.y += (targetY - housePivot.rotation.y) * 0.05;
-          housePivot.rotation.x += (0 - housePivot.rotation.x) * 0.05;
-        } else {
-          // If user drags, sync baseRotationY to manual rotation to avoid sudden jumps when releasing drag
-          baseRotationY = housePivot.rotation.y - (scrollPercentage - 0.5) * Math.PI * 0.4;
+          // Slow, passive auto-rotation (spins smoothly in place)
+          housePivot.rotation.y += 0.0035;
         }
       }
 
