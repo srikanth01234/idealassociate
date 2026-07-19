@@ -140,12 +140,17 @@ document.addEventListener('DOMContentLoaded', () => {
     // Calculate dimensions dynamically for responsive layout translation
     let cardWidth = 0;
     let gap = 0;
+    let centerOffset = 0;
+    const grid = document.querySelector('.testimonials-grid');
     if (testimonialCards.length > 0) {
       cardWidth = testimonialCards[0].offsetWidth;
-      const grid = document.querySelector('.testimonials-grid');
       if (grid) {
         const computedStyle = window.getComputedStyle(grid);
-        gap = parseFloat(computedStyle.columnGap) || 0;
+        gap = parseFloat(computedStyle.columnGap) || parseFloat(computedStyle.gap) || 0;
+
+        // Centering offset calculation for mobile/tablet horizontal carousel view
+        const containerWidth = grid.clientWidth;
+        centerOffset = (containerWidth - cardWidth) / 2;
       }
     }
     const step = cardWidth + gap;
@@ -166,20 +171,26 @@ document.addEventListener('DOMContentLoaded', () => {
         positionIndex = 2; // Right
       }
 
-      // Translate dynamically on desktop views, stack normally on tablet/mobile views
+      // Translate dynamically on desktop views, and slide horizontally on tablet/mobile views
       if (window.innerWidth > 992) {
         const translation = (positionIndex - i) * step;
         card.style.transform = `translateX(${translation}px)`;
+        card.style.opacity = '';
+        card.style.zIndex = '';
         if (positionIndex === 1) {
           card.style.transform += ` translateY(-5px)`;
         }
       } else {
-        // Reset translate and only raise active card on stacked mobile/tablet view
-        if (i === testimonialIndex) {
-          card.style.transform = `translateY(-5px)`;
-          card.classList.add('active-card');
+        const translation = centerOffset + (positionIndex - 1 - i) * step;
+        card.style.transform = `translateX(${translation}px)`;
+        if (positionIndex === 1) {
+          card.style.transform += ` translateY(-5px) scale(1)`;
+          card.style.opacity = '1';
+          card.style.zIndex = '3';
         } else {
-          card.style.transform = `none`;
+          card.style.transform += ` translateY(0) scale(0.92)`;
+          card.style.opacity = '0.6';
+          card.style.zIndex = '1';
         }
       }
     });
@@ -236,8 +247,65 @@ document.addEventListener('DOMContentLoaded', () => {
     testimonialGrid.addEventListener('mouseleave', startAutoSwipe);
   }
 
-  // Recalculate on window resize to ensure responsive translation offsets
+  // Swipe Gestures for Mobile/Tablet
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  if (testimonialGrid) {
+    testimonialGrid.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoSwipe(); // Pause autoplay when swiping starts
+    }, { passive: true });
+
+    testimonialGrid.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipeGesture();
+      startAutoSwipe(); // Resume autoplay after swiping ends
+    }, { passive: true });
+  }
+
+  const handleSwipeGesture = () => {
+    const swipeThreshold = 50; // Minimum distance to register swipe
+    if (touchStartX - touchEndX > swipeThreshold) {
+      // Swiped left, show next
+      updateTestimonials(testimonialIndex + 1);
+    } else if (touchEndX - touchStartX > swipeThreshold) {
+      // Swiped right, show prev
+      updateTestimonials(testimonialIndex - 1);
+    }
+  };
+
+  // 5B. RESPONSIVE DOM MANAGEMENT FOR 3D CANVAS
+  const threeContainer = document.getElementById('house-3d-container');
+  const threeCanvas = document.getElementById('threejs-canvas');
+  const threeLoader = document.getElementById('threejs-loader');
+  const desktopParent = document.querySelector('.contact-3d-column');
+  const mobilePlaceholder = document.querySelector('.contact-3d-placeholder-mobile');
+
+  const handleResponsive3D = () => {
+    if (!threeContainer) return;
+    if (window.innerWidth <= 992) {
+      if (mobilePlaceholder && threeContainer.parentElement !== mobilePlaceholder) {
+        mobilePlaceholder.appendChild(threeContainer);
+      }
+    } else {
+      if (desktopParent && threeContainer.parentElement !== desktopParent) {
+        const quoteBanner = desktopParent.querySelector('.contact-quote-banner');
+        if (quoteBanner) {
+          desktopParent.insertBefore(threeContainer, quoteBanner);
+        } else {
+          desktopParent.appendChild(threeContainer);
+        }
+      }
+    }
+  };
+
+  // Run immediately on script load
+  handleResponsive3D();
+
+  // Recalculate on window resize to ensure responsive translation offsets and DOM positioning
   window.addEventListener('resize', () => {
+    handleResponsive3D();
     updateTestimonials(testimonialIndex);
   });
 
@@ -249,10 +317,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // 6. THREE.JS 3D HOUSE MODEL VIEWER
   // ==========================================================================
-  const threeContainer = document.getElementById('house-3d-container');
-  const threeCanvas = document.getElementById('threejs-canvas');
-  const threeLoader = document.getElementById('threejs-loader');
-
   if (threeContainer && threeCanvas) {
     let scene, camera, renderer, controls;
     let houseModel = null;
@@ -272,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
       0.1,
       100
     );
-    camera.position.set(9, 6, 13); // Ideal cinematic angle to view the house
+    camera.position.set(9, 0.6, 15); // Ideal cinematic angle to view the house
 
     renderer = new THREE.WebGLRenderer({
       canvas: threeCanvas,
@@ -457,27 +521,27 @@ document.addEventListener('DOMContentLoaded', () => {
     // I. Modern Header Scroll Reveal Effect (Hide on Scroll Down, Show on Scroll Up)
     let lastScrollY = window.scrollY;
     const header = document.querySelector('.main-header');
-    
+
     const handleHeaderScroll = () => {
       const currentScrollY = window.scrollY;
-      
+
       // Toggle "scrolled" class for background styling
       if (currentScrollY > 50) {
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
       }
-      
+
       // Hide on scroll down, show on scroll up
       if (currentScrollY > lastScrollY && currentScrollY > 100) {
         header.classList.add('header-hidden');
       } else {
         header.classList.remove('header-hidden');
       }
-      
+
       lastScrollY = currentScrollY;
     };
-    
+
     window.addEventListener('scroll', handleHeaderScroll);
     // Initialize once on load
     handleHeaderScroll();
