@@ -336,7 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
       0.1,
       100
     );
-    camera.position.set(9, 0.6, 15); // Ideal cinematic angle to view the house
+    camera.position.set(7, 0.6, 18); // Ideal cinematic angle to view the house
 
     renderer = new THREE.WebGLRenderer({
       canvas: threeCanvas,

@@ -5205,7 +5205,7 @@ body {
 
 .contact-info-column {
   position: relative;
-  z-index: 2;
+  z-index: 6;
 }
 
 .contact-3d-placeholder-mobile {
@@ -5356,7 +5356,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 12;
+  z-index: 25;
   /* Elevated to sit on top of surrounding layout panels */
 }
 
@@ -5364,26 +5364,29 @@ body {
   position: absolute;
   top: -20px;
   bottom: -20px;
+  left: -70px;
   right: -200px;
-  width: 120%;
   background-color: #ffffff;
-  border-radius: 260px 0 0 260px;
-  /* Beautiful curved wing */
+  border-radius: 340px 0 0 340px;
+  /* Beautiful curved wing extending further left */
   z-index: 1;
   box-shadow: -15px 0 35px rgba(0, 0, 0, 0.02);
 }
 
 .threejs-container {
-  position: relative;
+  position: absolute;
+  top: -65px;
+  /* shift slightly top */
+  left: -6rem;
+  /* overlap the left container */
   width: calc(100% + 6rem);
-  height: 100%;
+  height: calc(100% + 100px);
+  /* extended height to prevent bottom clipping */
   z-index: 20;
   /* Sits above the background mask */
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -30px; /* shift slightly top */
-  margin-left: -6rem; /* overlap the left container */
 }
 
 #threejs-canvas {
@@ -5751,7 +5754,8 @@ body {
 
   .contact-3d-bg-mask {
     right: -150px;
-    width: 115%;
+    left: -180px;
+    border-radius: 280px 0 0 280px;
   }
 
   .contact-quote-banner {
@@ -5794,6 +5798,9 @@ body {
   }
 
   .contact-3d-placeholder-mobile #house-3d-container {
+    position: relative !important;
+    top: 0 !important;
+    left: 0 !important;
     width: 100% !important;
     height: 350px;
     margin-top: 0 !important;
