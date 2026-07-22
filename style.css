@@ -152,7 +152,8 @@ body {
   position: fixed;
   top: 25px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -200px);
+  opacity: 0;
   width: 90%;
   max-width: 1400px;
   height: 80px;
@@ -170,24 +171,55 @@ body {
   align-items: center;
   overflow: hidden;
   /* Clips the left logo block to the capsule border radius */
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Scrolled state for the header */
-.main-header.scrolled {
+.main-header.scrolled,
+body.loaded .main-header.scrolled {
   background: rgba(10, 12, 16, 0.85);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 /* Hidden state when scrolling down */
-.main-header.header-hidden {
+.main-header.header-hidden,
+body.loaded .main-header.header-hidden {
   transform: translate(-50%, -150%) scale(0.95);
   /* Slide up and shrink slightly */
   opacity: 0;
   /* Fade out */
   pointer-events: none;
   /* Disable interactions when hidden */
+}
+
+/* Active transition phase during page entrance animation (2.8s duration) */
+body.animating .main-header {
+  transition: transform 2.8s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 2.8s ease;
+}
+body.animating .main-content {
+  transition: transform 2.8s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 2.8s ease;
+}
+body.animating .right-sidebar {
+  transition: transform 2.8s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 2.8s ease;
+}
+
+/* Landing / Resting states when loaded */
+body.loaded .main-header {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+body.loaded .main-content {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+body.loaded .right-sidebar {
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+
+/* Header scroll transitions (active after entrance animation completes) */
+body.loaded:not(.animating) .main-header {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Logo Block with White Background and Curve Divider */
@@ -198,14 +230,19 @@ body {
   background: #ffffff;
   height: 100%;
   padding: 0 15px 0 35px;
+  margin-left: -2px;
+  padding-left: 37px;
   margin-right: 35px;
   /* Leave space for the curve divider */
+  border: none !important;
+  outline: none !important;
 }
 
 .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
+  border: none !important;
 }
 
 .logo-img {
@@ -219,7 +256,7 @@ body {
 .logo-curve-divider {
   position: absolute;
   top: 0;
-  left: 100%;
+  left: calc(100% - 1px);
   height: 100%;
   width: 40px;
   /* Width of the curve */
@@ -530,6 +567,8 @@ body {
   justify-content: center;
   align-items: flex-start;
   max-width: 820px;
+  transform: translate3d(-100vw, 0, 0);
+  opacity: 0;
 }
 
 /* Play Showreel Button Styling */
@@ -718,6 +757,8 @@ body {
   align-self: center;
   padding-left: 3rem;
   position: relative;
+  transform: translate3d(100vw, 0, 0);
+  opacity: 0;
 }
 
 
@@ -2610,11 +2651,17 @@ body {
   text-align: center;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
   /* More pronounced shadow to pop over white backgrounds */
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  /* Remove transform transition to prevent conflicts with GSAP */
+  transition: box-shadow 0.4s ease;
 
   /* Reset local variables back to dark colors so text is visible on the white card background */
   --text-dark: #0f1216;
   --text-muted-light: rgba(15, 18, 22, 0.65);
+}
+
+/* Re-enable transform transition only after unfolding is complete for hover lift */
+.process-section.unfolded .process-card {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .process-card:hover {
@@ -2708,8 +2755,8 @@ body {
 .process-card:not(:last-child)::after {
   content: '';
   position: absolute;
-  top: 54px;
-  /* Centered relative to the new padding */
+  top: 160px;
+  /* Moved down so the dark green dotted curve is clearly visible over the white card background */
   right: -1.95rem;
   /* Offsets to match the new 2.2rem grid gap */
   width: 2.4rem;
@@ -2720,6 +2767,13 @@ body {
   background-size: contain;
   z-index: 2;
   pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* Fade in connector lines only after the stack unfolding has finished */
+.process-section.unfolded .process-card:not(:last-child)::after {
+  opacity: 1;
 }
 
 
@@ -3852,7 +3906,7 @@ body {
   position: relative;
   background-color: #fcfcf7;
   /* Warm cream background */
-  padding: 4rem 5rem;
+  padding: 4rem 5rem 2rem 5rem;
   z-index: 5;
   overflow: hidden;
   border-top: 1px solid rgba(15, 18, 22, 0.03);
@@ -5187,7 +5241,7 @@ body {
 
 .contact-section {
   position: relative;
-  padding: 8rem 5rem 6rem 5rem;
+  padding: 3.5rem 5rem 6rem 5rem;
   background-color: #fbfbfc;
   overflow: hidden;
   z-index: 5;
@@ -5741,7 +5795,7 @@ body {
 
 @media (max-width: 1200px) {
   .contact-section {
-    padding: 6rem 3.5rem 5rem 3.5rem;
+    padding: 3rem 3.5rem 5rem 3.5rem;
   }
 
   .contact-container {
@@ -6127,5 +6181,79 @@ body {
 
   .logo-curve-divider {
     width: 30px;
+  }
+}
+
+/* ==========================================================================
+   12. FEATURED WORK CARDS SCROLL ENTRANCE TRANSITIONS
+   ========================================================================== */
+
+/* Desktop screens (Columns are side-by-side) */
+@media (min-width: 993px) {
+  /* Initial off-screen state when NOT revealed */
+  .featured-section:not(.reveal) .featured-center-column .project-hero-card {
+    transform: translate3d(20%, 0, 0);
+    opacity: 1;
+  }
+
+  /* Card 2 (Skyline Office) starts translated down behind Card 1 */
+  .featured-section:not(.reveal) .featured-right-column .project-side-card {
+    transform: translate3d(-126%, 150px, 0) scale(0.95);
+    opacity: 0;
+  }
+
+  /* Card 3 (Greenfield Warehouse) starts translated up behind Card 1 */
+  .featured-section:not(.reveal) .featured-right-column .project-side-card + .project-side-card {
+    transform: translate3d(-126%, -150px, 0) scale(0.95);
+    opacity: 0;
+  }
+
+  /* Set entrance transition properties on the base elements */
+  .featured-center-column .project-hero-card {
+    transition: transform 2.4s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 2.4s cubic-bezier(0.1, 0.9, 0.2, 1);
+  }
+
+  .featured-right-column .project-side-card {
+    transition: transform 2.4s cubic-bezier(0.1, 0.9, 0.2, 1), opacity 2.4s cubic-bezier(0.1, 0.9, 0.2, 1), box-shadow 0.4s ease;
+  }
+
+  /* 0.4-second delay when fanning out */
+  .featured-section.reveal .featured-center-column .project-hero-card {
+    transition-delay: 0.4s;
+  }
+
+  .featured-section.reveal .featured-right-column .project-side-card {
+    transition-delay: 0.4s;
+  }
+
+  /* Overrides to keep hover animations responsive and lift the card vertically */
+  .featured-right-column .project-side-card:hover {
+    transform: translateY(-4px) translate3d(0, 0, 0) scale(1) !important;
+    box-shadow: 0 25px 50px rgba(15, 18, 22, 0.08) !important;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* Tablet and Mobile screens (Fallback simple fade & slide up) */
+@media (max-width: 992px) {
+  .featured-section:not(.reveal) .featured-center-column .project-hero-card {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+
+  .featured-section:not(.reveal) .featured-right-column .project-side-card {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  
+  .featured-center-column .project-hero-card,
+  .featured-right-column .project-side-card {
+    transition: transform 1.2s cubic-bezier(0.19, 1, 0.22, 1), opacity 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .featured-section.reveal .featured-center-column .project-hero-card,
+  .featured-section.reveal .featured-right-column .project-side-card {
+    transition-delay: 0.4s;
   }
 }

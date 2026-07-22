@@ -8,6 +8,15 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // Trigger entrance transitions by adding classes to body
+  document.body.classList.add('animating');
+  document.body.offsetHeight; // Force reflow to paint initial offscreen states
+  document.body.classList.add('loaded');
+
+  // Clean up animating class after transitions complete (2800ms)
+  setTimeout(() => {
+    document.body.classList.remove('animating');
+  }, 2800);
 
   // 1. VIDEO SHOWREEL MODAL INTERACTION
   const playBtn = document.getElementById('play-video-btn');
@@ -480,6 +489,23 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrollY = window.scrollY;
       const heroHeight = window.innerHeight;
 
+      // If page is at scroll position 0 and we haven't scrolled, let the CSS entrance transitions play
+      if (scrollY === 0) {
+        if (heroContent) {
+          heroContent.style.transform = '';
+          heroContent.style.opacity = '';
+        }
+        if (leftSidebar) {
+          leftSidebar.style.transform = '';
+          leftSidebar.style.opacity = '';
+        }
+        if (rightSidebar) {
+          rightSidebar.style.transform = '';
+          rightSidebar.style.opacity = '';
+        }
+        return;
+      }
+
       if (scrollY <= heroHeight) {
         // Translate elements upwards at different speeds and fade them out
         const translateVal = scrollY * 0.45;
@@ -585,6 +611,298 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     animate();
+  }
+
+  // 7. SCROLL-TRIGGERED ENTRANCE ANIMATIONS (INTERSECTION OBSERVER FOR FEATURED WORK)
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.25 // Trigger when 25% of the section is visible
+  };
+
+  const sectionObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('reveal');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  const featuredSection = document.querySelector('.featured-section');
+  if (featuredSection) {
+    sectionObserver.observe(featuredSection);
+  }
+
+  // 8. PROCESS SECTION STACK UNFOLDING ANIMATION (GSAP & SCROLLTRIGGER)
+  gsap.registerPlugin(ScrollTrigger);
+
+  const processSection = document.querySelector('.process-section');
+  const processGrid = document.querySelector('.process-grid');
+  const processCards = gsap.utils.toArray(".process-card");
+
+  if (processSection && processGrid && processCards.length === 6) {
+    let mm = gsap.matchMedia();
+
+    // Desktop Layout (min-width: 1201px): Stack unfolding animation
+    mm.add("(min-width: 1201px)", () => {
+      // Calculate dynamic spacing between columns
+      const firstCard = processCards[0];
+      const secondCard = processCards[1];
+      const colSpacing = secondCard.getBoundingClientRect().left - firstCard.getBoundingClientRect().left;
+
+      const leftStack = [processCards[0], processCards[1], processCards[2]]; // Cards 1, 2, 3
+      const rightStack = [processCards[5], processCards[4], processCards[3]]; // Cards 6, 5, 4 (reverse order)
+
+      // Set initial stacked states for Left Stack (1, 2, 3)
+      leftStack.forEach((card, i) => {
+        const initX = -i * colSpacing;
+        const initY = -i * 8; // slight vertical offset for stack depth
+        const initZ = 20 - i;  // Card 1 on top, Card 3 at the bottom
+        const initOpacity = i === 0 ? 1 : (i === 1 ? 0.7 : 0.4);
+        const initScale = i === 0 ? 1 : 0.95;
+        const initRot = -i * 3; // slight tilt to left
+
+        gsap.set(card, {
+          x: initX,
+          y: initY,
+          zIndex: initZ,
+          opacity: initOpacity,
+          scale: initScale,
+          rotation: initRot,
+          transformOrigin: "bottom center"
+        });
+      });
+
+      // Set initial stacked states for Right Stack (6, 5, 4)
+      rightStack.forEach((card, i) => {
+        const initX = i * colSpacing;
+        const initY = -i * 8; // slight vertical offset for stack depth
+        const initZ = 20 - i;  // Card 6 on top, Card 4 at the bottom
+        const initOpacity = i === 0 ? 1 : (i === 1 ? 0.7 : 0.4);
+        const initScale = i === 0 ? 1 : 0.95;
+        const initRot = i * 3; // slight tilt to right
+
+        gsap.set(card, {
+          x: initX,
+          y: initY,
+          zIndex: initZ,
+          opacity: initOpacity,
+          scale: initScale,
+          rotation: initRot,
+          transformOrigin: "bottom center"
+        });
+      });
+
+      // Create GSAP Scroll Timeline
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".process-section",
+          start: "top 70%",
+          once: true // Only runs once, and then kills/cleans itself
+        },
+        onComplete: () => {
+          processSection.classList.add('unfolded');
+        }
+      });
+
+      // Step 1: Card 2 & 5 slide out, carrying Card 3 & 4 with them to column 2 & 5
+      tl.to([leftStack[1], rightStack[1]], {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        duration: 0.7,
+        ease: "power3.out"
+      })
+      .to(leftStack[2], {
+        x: -colSpacing,
+        y: -8,
+        opacity: 0.7,
+        scale: 0.95,
+        rotation: -3,
+        duration: 0.7,
+        ease: "power3.out"
+      }, 0)
+      .to(rightStack[2], {
+        x: colSpacing,
+        y: -8,
+        opacity: 0.7,
+        scale: 0.95,
+        rotation: 3,
+        duration: 0.7,
+        ease: "power3.out"
+      }, 0)
+
+      // Step 2: Card 3 & 4 slide out from their intermediate positions to final columns
+      .to([leftStack[2], rightStack[2]], {
+        x: 0,
+        y: 0,
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        duration: 0.7,
+        ease: "power3.out"
+      }, 0.35); // Start at 0.35s on the timeline (overlapping Step 1)
+    });
+
+    // Mobile & Tablet Layout (max-width: 1200px): Simple staggered fade & slide up
+    mm.add("(max-width: 1200px)", () => {
+      // Clear desktop transforms and set mobile starting states
+      gsap.set(processCards, {
+        x: 0,
+        y: 30,
+        zIndex: "",
+        opacity: 0,
+        scale: 1,
+        rotation: 0,
+        transformOrigin: ""
+      });
+
+      gsap.to(processCards, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        stagger: 0.15,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".process-section",
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+
+      // Immediately add unfolded class to show connectors (since there is no deck stack)
+      processSection.classList.add('unfolded');
+    });
+  }
+
+  // 9. REMAINING SECTIONS SCROLL ANIMATIONS (GSAP)
+  // Uses gsap.matchMedia() for desktop vs mobile responsive behaviour
+  const sectionsMM = gsap.matchMedia();
+
+  // ─── HELPER: a reusable "simple fade up" fallback for mobile ───────────────
+  function mobileSimpleFadeUp(targets, trigger, stagger = 0.1) {
+    gsap.set(targets, { opacity: 0, y: 30 });
+    gsap.to(targets, {
+      opacity: 1, y: 0,
+      duration: 0.7, stagger,
+      ease: 'power2.out',
+      scrollTrigger: { trigger, start: 'top 85%', once: true }
+    });
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // A. SERVICES SHOWCASE — Split-open reveal
+  // ══════════════════════════════════════════════════════════════════════════════
+  const servicesSec = document.querySelector('.services-showcase-section');
+  if (servicesSec) {
+    sectionsMM.add('(min-width: 768px)', () => {
+      const imgCol   = servicesSec.querySelector('.services-image-column');
+      const textEls  = [
+        servicesSec.querySelector('.services-subtitle-wrapper'),
+        servicesSec.querySelector('.services-heading'),
+        servicesSec.querySelector('.services-heading-underline'),
+        servicesSec.querySelector('.services-description'),
+        servicesSec.querySelector('.services-features-grid'),
+        servicesSec.querySelector('.services-btn-wrapper'),
+      ].filter(Boolean);
+
+      gsap.set(imgCol,    { x: -120, opacity: 0 });
+      gsap.set(textEls,   { x:  60,  opacity: 0 });
+
+      const tl = gsap.timeline({ scrollTrigger: { trigger: servicesSec, start: 'top 75%', once: true } });
+      tl.to(imgCol,  { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out' }, 0)
+        .to(textEls, { x: 0, opacity: 1, duration: 0.8, stagger: 0.12, ease: 'power3.out' }, 0.15);
+    });
+
+    sectionsMM.add('(max-width: 767px)', () => {
+      mobileSimpleFadeUp(
+        servicesSec.querySelectorAll('.services-image-column, .services-subtitle-wrapper, .services-heading, .services-description, .services-features-grid, .services-btn-wrapper'),
+        servicesSec
+      );
+    });
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // B. PROJECT GALLERY — Curtain drop
+  // ══════════════════════════════════════════════════════════════════════════════
+  const gallerySec = document.querySelector('.gallery-section');
+  if (gallerySec) {
+    sectionsMM.add('(min-width: 768px)', () => {
+      const headerEls   = gallerySec.querySelectorAll('.gallery-top-subtitle, .gallery-intro-col > *');
+      const showcaseImg = gallerySec.querySelector('.gallery-showcase-col');
+      const gridCards   = gallerySec.querySelectorAll('.gallery-card');
+      const featureItems = gallerySec.querySelectorAll('.gallery-feature-item');
+
+      gsap.set(headerEls,   { y: -40, opacity: 0 });
+      gsap.set(showcaseImg, { scale: 0.9, opacity: 0 });
+      gsap.set(gridCards,   { y: 50, rotation: 2, opacity: 0 });
+      gsap.set(featureItems, { y: 20, opacity: 0 });
+
+      const tl = gsap.timeline({ scrollTrigger: { trigger: gallerySec, start: 'top 80%', once: true } });
+      tl.to(headerEls,    { y: 0, opacity: 1, duration: 0.8, stagger: 0.1, ease: 'power3.out' }, 0)
+        .to(showcaseImg,  { scale: 1, opacity: 1, duration: 1.0, ease: 'power3.out' }, 0.2)
+        .to(gridCards,    { y: 0, rotation: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out' }, 0.4)
+        .to(featureItems, { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: 'power2.out' }, '-=0.2');
+    });
+
+    sectionsMM.add('(max-width: 767px)', () => {
+      mobileSimpleFadeUp(
+        gallerySec.querySelectorAll('.gallery-top-subtitle, .gallery-intro-col > *, .gallery-showcase-col, .gallery-card, .gallery-feature-item'),
+        gallerySec
+      );
+    });
+  }
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // C. WHY CHOOSE US — Converging sides
+  // ══════════════════════════════════════════════════════════════════════════════
+  const whySec = document.querySelector('.why-choose-us-section');
+  if (whySec) {
+    sectionsMM.add('(min-width: 768px)', () => {
+      const header     = whySec.querySelector('.why-header');
+      const leftCards  = whySec.querySelectorAll('.why-left-column .why-feature-card');
+      const centerImg  = whySec.querySelector('.why-visual-column');
+      const rightCards = whySec.querySelectorAll('.why-right-column .why-feature-card');
+
+      gsap.set(header,     { y: -30, opacity: 0 });
+      gsap.set(leftCards,  { x: -80, opacity: 0 });
+      gsap.set(centerImg,  { y: 60, scale: 0.85, opacity: 0 });
+      gsap.set(rightCards, { x:  80, opacity: 0 });
+
+      const tl = gsap.timeline({ scrollTrigger: { trigger: whySec, start: 'top 75%', once: true } });
+      tl.to(header,     { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out' }, 0)
+        .to(leftCards,  { x: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' }, 0.2)
+        .to(centerImg,  { y: 0, scale: 1, opacity: 1, duration: 1.0, ease: 'back.out(1.2)' }, 0.25)
+        .to(rightCards, { x: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out' }, 0.2);
+    });
+
+    sectionsMM.add('(max-width: 767px)', () => {
+      mobileSimpleFadeUp(
+        whySec.querySelectorAll('.why-header, .why-feature-card, .why-visual-column'),
+        whySec, 0.08
+      );
+    });
+  }
+
+
+  // ══════════════════════════════════════════════════════════════════════════════
+  // F. FOOTER — Gentle staggered fade up
+  // ══════════════════════════════════════════════════════════════════════════════
+  const sitefooter = document.querySelector('.site-footer');
+  if (sitefooter) {
+    const footerEls = sitefooter.querySelectorAll(
+      '.footer-brand-column, .footer-badges-column, .footer-newsletter-column, .footer-divider, .footer-bottom-row'
+    );
+    gsap.set(footerEls, { y: 30, opacity: 0 });
+    gsap.to(footerEls, {
+      y: 0, opacity: 1,
+      duration: 0.7, stagger: 0.12,
+      ease: 'power2.out',
+      scrollTrigger: { trigger: sitefooter, start: 'top 90%', once: true }
+    });
   }
 
 });
