@@ -8,6 +8,45 @@ import { MeshoptDecoder } from 'three/addons/libs/meshopt_decoder.module.js';
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 0. INITIALIZE LENIS SMOOTH SCROLL & SYNC WITH GSAP
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // standard expo out ease
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
+    smoothWheel: true,
+    wheelMultiplier: 1,
+    touchMultiplier: 2,
+    infinite: false,
+  });
+
+  // Update ScrollTrigger on Lenis scroll
+  lenis.on('scroll', ScrollTrigger.update);
+
+  // Sync GSAP ticker with Lenis
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  // Disable lag smoothing for ScrollTrigger compatibility
+  gsap.ticker.lagSmoothing(0);
+
+  // Handle smooth scroll for all local hash anchor link navigations
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') {
+        lenis.scrollTo(0);
+        return;
+      }
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        lenis.scrollTo(targetEl, { offset: 0 });
+      }
+    });
+  });
+
   // Trigger entrance transitions by adding classes to body
   document.body.classList.add('animating');
   document.body.offsetHeight; // Force reflow to paint initial offscreen states
@@ -20,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 1. VIDEO SHOWREEL MODAL INTERACTION
   const playBtn = document.getElementById('play-video-btn');
+  const playProjectsBtn = document.getElementById('play-projects-video-btn');
   const videoModal = document.getElementById('video-modal');
   const closeVideoBtn = document.getElementById('close-video-btn');
   const iframePlayer = document.getElementById('showreel-iframe');
@@ -41,11 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
       videoModal.classList.remove('active');
       videoModal.setAttribute('aria-hidden', 'true');
       iframePlayer.src = ''; // Stop video playback immediately
-      document.body.style.overflow = 'hidden'; // Keep standard body overflow
+      document.body.style.overflow = ''; // Restore standard body overflow
     }
   };
 
   if (playBtn) playBtn.addEventListener('click', openModal);
+  if (playProjectsBtn) playProjectsBtn.addEventListener('click', openModal);
   if (closeVideoBtn) closeVideoBtn.addEventListener('click', closeModal);
 
   // Close modal when clicking on the outside overlay
@@ -98,30 +139,27 @@ document.addEventListener('DOMContentLoaded', () => {
   const scrollBtn = document.querySelector('.scroll-discover');
   if (scrollBtn) {
     scrollBtn.addEventListener('click', () => {
-      // Since this is a hero-only presentation, we simulate scrolling or scroll slightly
-      window.scrollBy({
-        top: window.innerHeight * 0.8,
-        behavior: 'smooth'
-      });
+      lenis.scrollTo(window.innerHeight * 0.8);
     });
   }
 
 
-  // 4. SUBTLE MOUSE PARALLAX EFFECT FOR BACKGROUND VIDEO
+  // 4. SUBTLE MOUSE PARALLAX EFFECT FOR BACKGROUND VIDEO (Interpolated via GSAP)
   const bgOverlay = document.querySelector('.bg-video');
 
   if (bgOverlay && window.innerWidth > 992) {
     document.addEventListener('mousemove', (e) => {
-      const mouseX = e.clientX / window.innerWidth - 0.5; // Normalized range [-0.5, 0.5]
-      const mouseY = e.clientY / window.innerHeight - 0.5;
+      const mouseX = (e.clientX / window.innerWidth - 0.5) * -18;
+      const mouseY = (e.clientY / window.innerHeight - 0.5) * -18;
 
-      // Calculate translations (subtle, offset of up to 18px)
-      const moveX = mouseX * -18;
-      const moveY = mouseY * -18;
-
-      // Apply translation to background video with hardware-acceleration
-      // scale(1.08) preserves the sizing buffer to prevent border gaps
-      bgOverlay.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(1.08)`;
+      gsap.to(bgOverlay, {
+        x: mouseX,
+        y: mouseY,
+        scale: 1.08,
+        duration: 0.8,
+        ease: "power2.out",
+        overwrite: "auto"
+      });
     });
   }
 
@@ -345,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
       0.1,
       100
     );
-    camera.position.set(7, 0.6, 18); // Ideal cinematic angle to view the house
+    camera.position.set(7, 0.6, 20); // Ideal cinematic angle to view the house
 
     renderer = new THREE.WebGLRenderer({
       canvas: threeCanvas,
@@ -469,117 +507,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isCanvasVisible = false;
 
-    // E. Viewport Visibility Check
-    const checkCanvasVisibility = () => {
-      const rect = threeContainer.getBoundingClientRect();
-      const viewHeight = window.innerHeight;
-      isCanvasVisible = (rect.top < viewHeight && rect.bottom > 0);
-    };
-
-    window.addEventListener('scroll', checkCanvasVisibility);
-    // Initialize once on load
-    checkCanvasVisibility();
-
-    // H. Hero Section Content Parallax Fade Out
-    const heroContent = document.querySelector('.hero-container .main-content');
-    const leftSidebar = document.querySelector('.left-sidebar');
-    const rightSidebar = document.querySelector('.right-sidebar');
-
-    const handleHeroParallax = () => {
-      const scrollY = window.scrollY;
-      const heroHeight = window.innerHeight;
-
-      // If page is at scroll position 0 and we haven't scrolled, let the CSS entrance transitions play
-      if (scrollY === 0) {
-        if (heroContent) {
-          heroContent.style.transform = '';
-          heroContent.style.opacity = '';
-        }
-        if (leftSidebar) {
-          leftSidebar.style.transform = '';
-          leftSidebar.style.opacity = '';
-        }
-        if (rightSidebar) {
-          rightSidebar.style.transform = '';
-          rightSidebar.style.opacity = '';
-        }
-        return;
-      }
-
-      if (scrollY <= heroHeight) {
-        // Translate elements upwards at different speeds and fade them out
-        const translateVal = scrollY * 0.45;
-        const opacityVal = 1 - (scrollY / (heroHeight * 0.65));
-
-        if (heroContent) {
-          heroContent.style.transform = `translate3d(0, -${translateVal}px, 0)`;
-          heroContent.style.opacity = Math.max(0, opacityVal);
-        }
-        if (leftSidebar) {
-          leftSidebar.style.transform = `translate3d(0, -${translateVal * 0.5}px, 0)`;
-          leftSidebar.style.opacity = Math.max(0, opacityVal);
-        }
-        if (rightSidebar) {
-          rightSidebar.style.transform = `translate3d(0, -${translateVal * 0.5}px, 0)`;
-          rightSidebar.style.opacity = Math.max(0, opacityVal);
-        }
-      } else {
-        // Reset when scrolled past
-        if (heroContent) {
-          heroContent.style.transform = 'none';
-          heroContent.style.opacity = 0;
-        }
-        if (leftSidebar) {
-          leftSidebar.style.transform = 'none';
-          leftSidebar.style.opacity = 0;
-        }
-        if (rightSidebar) {
-          rightSidebar.style.transform = 'none';
-          rightSidebar.style.opacity = 0;
-        }
-      }
-    };
-
-    window.addEventListener('scroll', handleHeroParallax);
-    // Initialize on load in case page starts scrolled
-    handleHeroParallax();
-
-    // I. Modern Header Scroll Reveal Effect (Hide on Scroll Down, Show on Scroll Up)
-    let lastScrollY = window.scrollY;
-    const header = document.querySelector('.main-header');
-
-    const handleHeaderScroll = () => {
-      const currentScrollY = window.scrollY;
-
-      // Toggle "scrolled" class for background styling
-      if (currentScrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-
-      // Hide on scroll down, show on scroll up
-      if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        header.classList.add('header-hidden');
-      } else {
-        header.classList.remove('header-hidden');
-      }
-
-      lastScrollY = currentScrollY;
-    };
-
-    window.addEventListener('scroll', handleHeaderScroll);
-    // Initialize once on load
-    handleHeaderScroll();
-
-    // Desktop Nav Items Active Switcher
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      item.addEventListener('click', () => {
-        navItems.forEach(nav => nav.classList.remove('active'));
-        item.classList.add('active');
+    // E. Viewport Visibility Check via IntersectionObserver (Highly Optimized)
+    const houseObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isCanvasVisible = entry.isIntersecting;
       });
+    }, {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.01 // Start rendering as soon as 1% is visible
     });
+    houseObserver.observe(threeContainer);
 
     // F. Resize Event
     window.addEventListener('resize', () => {
@@ -611,6 +549,93 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     animate();
+  }
+
+  // 3B. MODERN HEADER SCROLL REVEAL EFFECT (Throttled with requestAnimationFrame)
+  let lastScrollY = window.scrollY;
+  const header = document.querySelector('.main-header');
+  let headerTicking = false;
+
+  const handleHeaderScroll = () => {
+    const currentScrollY = window.scrollY;
+
+    // Toggle "scrolled" class for background styling
+    if (header) {
+      if (currentScrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+
+      // Hide on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        header.classList.add('header-hidden');
+      } else {
+        header.classList.remove('header-hidden');
+      }
+    }
+
+    lastScrollY = currentScrollY;
+    headerTicking = false;
+  };
+
+  if (header) {
+    window.addEventListener('scroll', () => {
+      if (!headerTicking) {
+        window.requestAnimationFrame(handleHeaderScroll);
+        headerTicking = true;
+      }
+    }, { passive: true });
+    // Initialize once on load
+    handleHeaderScroll();
+  }
+
+  // Desktop Nav Items Active Switcher
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      navItems.forEach(nav => nav.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+
+  // 9B. HERO PARALLAX VIA GSAP SCROLLTRIGGER (Optimized & GPU Accelerated)
+  const heroContent = document.querySelector('.hero-container .main-content');
+  const leftSidebar = document.querySelector('.left-sidebar');
+  const rightSidebar = document.querySelector('.right-sidebar');
+
+  if (heroContent || leftSidebar || rightSidebar) {
+    const heroTl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero-screen-wrapper",
+        start: "top top",
+        end: "bottom top",
+        scrub: true,
+        invalidateOnRefresh: true
+      }
+    });
+
+    if (heroContent) {
+      heroTl.to(heroContent, {
+        y: -150,
+        opacity: 0,
+        ease: "none"
+      }, 0);
+    }
+    if (leftSidebar) {
+      heroTl.to(leftSidebar, {
+        y: -75,
+        opacity: 0,
+        ease: "none"
+      }, 0);
+    }
+    if (rightSidebar) {
+      heroTl.to(rightSidebar, {
+        y: -75,
+        opacity: 0,
+        ease: "none"
+      }, 0);
+    }
   }
 
   // 7. SCROLL-TRIGGERED ENTRANCE ANIMATIONS (INTERSECTION OBSERVER FOR FEATURED WORK)
@@ -889,19 +914,253 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   // ══════════════════════════════════════════════════════════════════════════════
-  // F. FOOTER — Gentle staggered fade up
+  // F. FOOTER
   // ══════════════════════════════════════════════════════════════════════════════
-  const sitefooter = document.querySelector('.site-footer');
-  if (sitefooter) {
-    const footerEls = sitefooter.querySelectorAll(
-      '.footer-brand-column, .footer-badges-column, .footer-newsletter-column, .footer-divider, .footer-bottom-row'
-    );
-    gsap.set(footerEls, { y: 30, opacity: 0 });
-    gsap.to(footerEls, {
-      y: 0, opacity: 1,
-      duration: 0.7, stagger: 0.12,
-      ease: 'power2.out',
-      scrollTrigger: { trigger: sitefooter, start: 'top 90%', once: true }
+  // Footer renders statically to guarantee 100% visibility under all scroll conditions.
+
+
+  // ==========================================================================
+  // 10. PROJECTS SHOWCASE INTERACTIVE LOGIC
+  // ==========================================================================
+  const showcaseSection = document.getElementById('projects-showcase');
+  if (showcaseSection) {
+    const filterTabs = showcaseSection.querySelectorAll('.filter-tab');
+    const projectCards = showcaseSection.querySelectorAll('.project-card');
+    const showcaseSlider = document.getElementById('showcase-slider');
+    const showcasePrev = document.getElementById('showcase-prev');
+    const showcaseNext = document.getElementById('showcase-next');
+    const showcasePagination = document.getElementById('showcase-pagination-dots');
+
+    // A. Category Filter Interaction
+    filterTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        // Toggle Active state on Tabs
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filterValue = tab.getAttribute('data-filter');
+
+        // Animate grid visibility
+        let visibleCount = 0;
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filterValue === 'all' || category === filterValue) {
+            card.style.display = 'block';
+            // Trigger entry animation
+            gsap.fromTo(card, 
+              { opacity: 0, scale: 0.9, y: 15 }, 
+              { opacity: 1, scale: 1, y: 0, duration: 0.45, ease: "power2.out", clearProps: "all" }
+            );
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        // Rebuild pagination dots based on visible cards
+        updatePaginationDots(visibleCount);
+        // Scroll slider back to start
+        if (showcaseSlider) showcaseSlider.scrollLeft = 0;
+      });
+    });
+
+    // B. Rebuild & Control pagination dots
+    const updatePaginationDots = (visibleCount) => {
+      if (!showcasePagination) return;
+      showcasePagination.innerHTML = '';
+      
+      for (let i = 0; i < visibleCount; i++) {
+        const dot = document.createElement('span');
+        dot.className = `showcase-dot ${i === 0 ? 'active' : ''}`;
+        dot.setAttribute('data-index', i);
+        dot.addEventListener('click', () => {
+          scrollToCard(i);
+        });
+        showcasePagination.appendChild(dot);
+      }
+    };
+
+    const scrollToCard = (index) => {
+      if (!showcaseSlider) return;
+      const cards = Array.from(projectCards).filter(c => c.style.display !== 'none');
+      if (cards[index]) {
+        const scrollOffset = cards[index].offsetLeft - showcaseSlider.offsetLeft;
+        showcaseSlider.scrollTo({
+          left: scrollOffset - 10, // Slight padding
+          behavior: 'smooth'
+        });
+        updateActiveDot(index);
+      }
+    };
+
+    const updateActiveDot = (activeIndex) => {
+      if (!showcasePagination) return;
+      const dots = showcasePagination.querySelectorAll('.showcase-dot');
+      dots.forEach((dot, idx) => {
+        if (idx === activeIndex) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    };
+
+    // C. Scroll Listeners to sync slider dots
+    if (showcaseSlider) {
+      showcaseSlider.addEventListener('scroll', () => {
+        const cards = Array.from(projectCards).filter(c => c.style.display !== 'none');
+        if (cards.length === 0) return;
+
+        let closestIndex = 0;
+        let minDiff = Infinity;
+        const sliderScrollLeft = showcaseSlider.scrollLeft;
+
+        cards.forEach((card, idx) => {
+          const diff = Math.abs((card.offsetLeft - showcaseSlider.offsetLeft) - sliderScrollLeft);
+          if (diff < minDiff) {
+            minDiff = diff;
+            closestIndex = idx;
+          }
+        });
+
+        updateActiveDot(closestIndex);
+      });
+    }
+
+    // D. Left & Right Scroll Buttons for Projects Slider
+    if (showcasePrev && showcaseSlider) {
+      showcasePrev.addEventListener('click', () => {
+        const cardWidth = 350 + 32; // card flex-basis + gap
+        showcaseSlider.scrollBy({
+          left: -cardWidth,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    if (showcaseNext && showcaseSlider) {
+      showcaseNext.addEventListener('click', () => {
+        const cardWidth = 350 + 32; // card flex-basis + gap
+        showcaseSlider.scrollBy({
+          left: cardWidth,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    // Initialize pagination dots count on first render
+    updatePaginationDots(projectCards.length);
+
+    // E. Left & Right Scroll Buttons for Featured Videos
+    const featuredSlider = document.getElementById('featured-video-slider');
+    const featuredPrev = document.getElementById('featured-prev');
+    const featuredNext = document.getElementById('featured-next');
+
+    if (featuredPrev && featuredSlider) {
+      featuredPrev.addEventListener('click', () => {
+        const cardWidth = 240 + 24; // card width + gap
+        featuredSlider.scrollBy({
+          left: -cardWidth,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    if (featuredNext && featuredSlider) {
+      featuredNext.addEventListener('click', () => {
+        const cardWidth = 240 + 24; // card width + gap
+        featuredSlider.scrollBy({
+          left: cardWidth,
+          behavior: 'smooth'
+        });
+      });
+    }
+
+    // F. Dynamic Walkthrough Video Loading in Shared Modal
+    const videoCards = showcaseSection.querySelectorAll('.video-preview-card');
+    const sharedModal = document.getElementById('video-modal');
+    const sharedIframe = document.getElementById('showreel-iframe');
+
+    videoCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const videoUrl = card.getAttribute('data-video-url');
+        if (sharedModal && sharedIframe && videoUrl) {
+          sharedIframe.src = videoUrl;
+          sharedModal.classList.add('active');
+          sharedModal.setAttribute('aria-hidden', 'false');
+          document.body.style.overflow = 'hidden';
+        }
+      });
+    });
+  }
+
+  // ==========================================================================
+  // 11. FAQ ACCORDION INTERACTION LOGIC
+  // ==========================================================================
+  const faqSection = document.getElementById('faq');
+  if (faqSection) {
+    const faqItems = faqSection.querySelectorAll('.faq-item');
+
+    // Function to calculate and set dynamic height for open accordion items
+    const setAccordionHeight = (item, isOpen) => {
+      const content = item.querySelector('.faq-item-content');
+      if (!content) return;
+
+      if (isOpen) {
+        // Set height dynamically based on scrollHeight to allow smooth transition
+        content.style.maxHeight = content.scrollHeight + 'px';
+      } else {
+        content.style.maxHeight = '0px';
+      }
+    };
+
+    // Toggle single accordion item
+    const toggleFaqItem = (selectedItem) => {
+      const isOpen = selectedItem.classList.contains('active');
+
+      // Close all other open accordion items (accordion mode)
+      faqItems.forEach(item => {
+        if (item !== selectedItem && item.classList.contains('active')) {
+          item.classList.remove('active');
+          setAccordionHeight(item, false);
+        }
+      });
+
+      // Toggle current item
+      if (isOpen) {
+        selectedItem.classList.remove('active');
+        setAccordionHeight(selectedItem, false);
+      } else {
+        selectedItem.classList.add('active');
+        setAccordionHeight(selectedItem, true);
+      }
+    };
+
+    // Bind event listeners to accordion item header blocks
+    faqItems.forEach(item => {
+      const header = item.querySelector('.faq-item-header');
+      if (header) {
+        header.addEventListener('click', () => {
+          toggleFaqItem(item);
+        });
+      }
+    });
+
+    // Initialize the default open item height (01 is active by default in HTML)
+    const defaultOpenItem = faqSection.querySelector('.faq-item.active');
+    if (defaultOpenItem) {
+      // Small timeout to ensure browser paints and layout sizes are settled
+      setTimeout(() => {
+        setAccordionHeight(defaultOpenItem, true);
+      }, 300);
+    }
+
+    // Adjust max-height on window resize to avoid text clipping if layout changes shape
+    window.addEventListener('resize', () => {
+      const activeItem = faqSection.querySelector('.faq-item.active');
+      if (activeItem) {
+        setAccordionHeight(activeItem, true);
+      }
     });
   }
 

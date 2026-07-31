@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="JV Construction - Designing Spaces. Delivering Excellence. Explore our premium commercial & residential architectural projects.">
+  <title>Projects | JV Construction | Building Dreams</title>
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/favicons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicons/favicon-16x16.png">
+  <link rel="icon" href="assets/favicons/favicon.ico">
+
+  <!-- Google Fonts: Outfit (Sans-Serif) & Satisfy (Script) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Satisfy&display=swap"
+    rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Three.js Import Map -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+
+<body class="projects-page">
+
+  <!-- Header Section -->
+  <header class="main-header">
+    <!-- Brand Logo Block with S-Curve Divider -->
+    <div class="logo-block">
+      <a href="index.html" class="logo" id="header-logo" aria-label="JV Construction Home">
+        <img class="logo-img" src="assets/Logo.png" alt="JV Construction Logo" />
+      </a>
+      <div class="logo-curve-divider">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M 0,0 C 40,0 30,100 100,100 L 0,100 Z" fill="#ffffff" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Navigation Menu (Desktop) -->
+    <nav class="nav-bar">
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-item">Home</a></li>
+        <li><a href="index.html#about" class="nav-item">About Us</a></li>
+        <li><a href="index.html#services" class="nav-item">Services</a></li>
+        <li><a href="#" class="nav-item active">Projects</a></li>
+        <li><a href="index.html#contact" class="nav-item">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <!-- Right Column: Separator and CTA Button -->
+    <div class="header-right">
+      <div class="header-separator"></div>
+      <a href="index.html#contact" class="quote-btn">
+        <span class="quote-btn-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="paper-plane-icon">
+            <line x1="22" y1="2" x2="11" y2="13" />
+            <polygon points="22 2 15 22 11 13 2 9 22 2" fill="currentColor" />
+          </svg>
+        </span>
+        <span class="quote-btn-text">Get a Quote</span>
+      </a>
+    </div>
+
+    <!-- Mobile Hamburger Menu Trigger -->
+    <button class="menu-toggle" id="menu-toggle-btn" aria-label="Toggle Menu" aria-expanded="false">
+      <span class="menu-label">MENU</span>
+      <div class="hamburger-icon">
+        <span class="bar bar-top"></span>
+        <span class="bar bar-mid"></span>
+        <span class="bar bar-bot"></span>
+      </div>
+    </button>
+  </header>
+
+  <!-- Mobile Overlay Menu (Initially Hidden) -->
+  <div class="mobile-menu-overlay" id="mobile-menu">
+    <button class="close-mobile-menu" id="close-mobile-menu-btn" aria-label="Close Menu">&times;</button>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html" class="mobile-nav-item">Home</a></li>
+      <li><a href="index.html#about" class="mobile-nav-item">About Us</a></li>
+      <li><a href="index.html#services" class="mobile-nav-item">Services</a></li>
+      <li><a href="#" class="mobile-nav-item active">Projects</a></li>
+      <li><a href="index.html#contact" class="mobile-nav-item">Contact Us</a></li>
+    </ul>
+  </div>
+
+  <!-- Projects Hero Section -->
+  <main class="projects-hero">
+    <div class="projects-hero-container">
+      
+      <!-- Left Column: Content -->
+      <div class="projects-hero-content">
+        <!-- <span class="projects-tag">OUR PROJECTS</span> -->
+        <h1 class="projects-title">
+          Designing Spaces.<br><span class="text-nowrap">Delivering <span class="highlight-green">Excellence.</span></span>
+        </h1>
+        <div class="projects-title-underline"></div>
+        <p class="projects-description">
+          Explore our completed residential and commercial projects that reflect our passion for quality, innovation, and timely delivery.
+        </p>
+        <div class="projects-cta-group">
+          <a href="#projects-showcase" class="btn-explore-projects">
+            Explore Projects
+            <svg class="cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12" stroke="currentColor" stroke-width="2" />
+              <polyline points="12,5 19,12 12,19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+          <button class="btn-watch-videos" id="play-projects-video-btn">
+            Watch Project Videos
+            <span class="play-icon-circle-small">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="8,5 19,12 8,19" fill="currentColor" />
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Right Column: Premium Image -->
+      <div class="projects-hero-image-wrapper">
+        <img class="projects-hero-image" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Luxury Modern Architecture Villa" />
+      </div>
+
+    </div>
+
+    <!-- Floating Statistics Card -->
+    <div class="projects-stats-card">
+      
+      <!-- Stat 1 -->
+      <div class="projects-stat-item">
+        <div class="projects-stat-icon-wrapper">
+          <!-- Building Outline Icon -->
+          <svg class="projects-stat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <line x1="9" y1="3" x2="9" y2="21" />
+            <line x1="15" y1="3" x2="15" y2="21" />
+            <line x1="3" y1="9" x2="21" y2="9" />
+            <line x1="3" y1="15" x2="21" y2="15" />
+          </svg>
+        </div>
+        <div class="projects-stat-info">
+          <div class="projects-stat-number">250+</div>
+          <div class="projects-stat-label">Projects Completed</div>
+        </div>
+      </div>
+
+      <div class="projects-stat-divider"></div>
+
+      <!-- Stat 2 -->
+      <div class="projects-stat-item">
+        <div class="projects-stat-icon-wrapper">
+          <!-- Happy Clients Icon -->
+          <svg class="projects-stat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+        </div>
+        <div class="projects-stat-info">
+          <div class="projects-stat-number">300+</div>
+          <div class="projects-stat-label">Happy Clients</div>
+        </div>
+      </div>
+
+      <div class="projects-stat-divider"></div>
+
+      <!-- Stat 3 -->
+      <div class="projects-stat-item">
+        <div class="projects-stat-icon-wrapper">
+          <!-- Years Experience Icon (Award Badge) -->
+          <svg class="projects-stat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="8" r="7" />
+            <polyline points="8.21,13.89 7,23 12,20 17,23 15.79,13.88" />
+          </svg>
+        </div>
+        <div class="projects-stat-info">
+          <div class="projects-stat-number">15+</div>
+          <div class="projects-stat-label">Years Experience</div>
+        </div>
+      </div>
+
+      <div class="projects-stat-divider"></div>
+
+      <!-- Stat 4 -->
+      <div class="projects-stat-item">
+        <div class="projects-stat-icon-wrapper">
+          <!-- Cities Covered Icon (Map Pin) -->
+          <svg class="projects-stat-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+        </div>
+        <div class="projects-stat-info">
+          <div class="projects-stat-number">10+</div>
+          <div class="projects-stat-label">Cities Covered</div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Projects Showcase & Featured Section -->
+  <section class="projects-showcase-section" id="projects-showcase">
+    <div class="showcase-container">
+      
+      <!-- Section Header -->
+      <div class="showcase-header">
+        <span class="showcase-subtitle">EXPLORE OUR WORK</span>
+        <h2 class="showcase-heading">Projects That <span class="serif-green">Inspire.</span></h2>
+        
+        <!-- Premium Line-with-Dot Divider -->
+        <div class="divider-line-wrapper">
+          <div class="divider-line"></div>
+          <div class="divider-dot"></div>
+          <div class="divider-line"></div>
+        </div>
+      </div>
+
+      <!-- Filter Row (Category Buttons & Slider Nav) -->
+      <div class="filter-row">
+        <!-- Category Tab Buttons -->
+        <div class="filter-tabs-wrapper">
+          <button class="filter-tab active" data-filter="all">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+            </svg>
+            All Projects
+          </button>
+          
+          <button class="filter-tab" data-filter="residential">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+              <polyline points="9 22 9 12 15 12 15 22" />
+            </svg>
+            Residential
+          </button>
+
+          <button class="filter-tab" data-filter="commercial">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+              <line x1="9" y1="22" x2="9" y2="16" />
+              <line x1="15" y1="22" x2="15" y2="16" />
+              <line x1="9" y1="16" x2="15" y2="16" />
+              <path d="M8 6h2v2H8zm6 0h2v2h-2zm-6 5h2v2H8zm6 0h2v2h-2z" />
+            </svg>
+            Commercial
+          </button>
+
+          <button class="filter-tab" data-filter="interiors">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 18h16M7 14h10M5 14V8a3 3 0 0 1 6 0v6M13 14V8a3 3 0 0 1 6 0v6" />
+            </svg>
+            Interiors
+          </button>
+
+          <button class="filter-tab" data-filter="industrial">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 20h20M5 17h14M19 17v-4a2 2 0 0 0-2-2h-3a2 2 0 0 0-2 2v4M12 17v-8a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v8" />
+            </svg>
+            Industrial
+          </button>
+
+          <button class="filter-tab" data-filter="renovation">
+            <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+            </svg>
+            Renovation
+          </button>
+        </div>
+
+        <!-- Slider Carousel Nav arrows -->
+        <div class="carousel-nav-group">
+          <button class="carousel-nav-btn prev-btn" id="showcase-prev" aria-label="Previous Projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button class="carousel-nav-btn next-btn" id="showcase-next" aria-label="Next Projects">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Project Cards Slider -->
+      <div class="project-cards-slider" id="showcase-slider">
+        
+        <!-- Card 1: Modern Villa -->
+        <div class="project-card" data-category="residential">
+          <div class="card-image-wrapper">
+            <img class="card-image" src="assets/Project Gallery/Luxury Villa.png" alt="Modern Villa at Coimbatore" />
+          </div>
+          <div class="card-info">
+            <div class="card-text-block">
+              <h3 class="card-title">Modern Villa</h3>
+              <div class="card-location-wrapper">
+                <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span class="card-location">Coimbatore</span>
+              </div>
+            </div>
+            <a href="#" class="card-arrow-link" aria-label="View Project Details">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2: Luxury Row House -->
+        <div class="project-card" data-category="residential">
+          <div class="card-image-wrapper">
+            <img class="card-image" src="assets/Project Gallery/Minimal Residence.png" alt="Luxury Row House at Tirupur" />
+          </div>
+          <div class="card-info">
+            <div class="card-text-block">
+              <h3 class="card-title">Luxury Row House</h3>
+              <div class="card-location-wrapper">
+                <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span class="card-location">Tirupur</span>
+              </div>
+            </div>
+            <a href="#" class="card-arrow-link" aria-label="View Project Details">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3: Greenway Apartments -->
+        <div class="project-card" data-category="commercial">
+          <div class="card-image-wrapper">
+            <img class="card-image" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=600&q=80" alt="Greenway Apartments at Coimbatore" />
+          </div>
+          <div class="card-info">
+            <div class="card-text-block">
+              <h3 class="card-title">Greenway Apartments</h3>
+              <div class="card-location-wrapper">
+                <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span class="card-location">Coimbatore</span>
+              </div>
+            </div>
+            <a href="#" class="card-arrow-link" aria-label="View Project Details">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4: Warehouse Complex -->
+        <div class="project-card" data-category="industrial">
+          <div class="card-image-wrapper">
+            <img class="card-image" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Warehouse Complex at Erode" />
+          </div>
+          <div class="card-info">
+            <div class="card-text-block">
+              <h3 class="card-title">Warehouse Complex</h3>
+              <div class="card-location-wrapper">
+                <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span class="card-location">Erode</span>
+              </div>
+            </div>
+            <a href="#" class="card-arrow-link" aria-label="View Project Details">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 5: Luxury Interior Design -->
+        <div class="project-card" data-category="interiors">
+          <div class="card-image-wrapper">
+            <img class="card-image" src="assets/Project Gallery/Elegant Interior.png" alt="Luxury Interior Design at Coimbatore" />
+          </div>
+          <div class="card-info">
+            <div class="card-text-block">
+              <h3 class="card-title">Luxury Interior Design</h3>
+              <div class="card-location-wrapper">
+                <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span class="card-location">Coimbatore</span>
+              </div>
+            </div>
+            <a href="#" class="card-arrow-link" aria-label="View Project Details">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 6: Renovation Project -->
+        <div class="project-card" data-category="renovation">
+          <div class="card-image-wrapper">
+            <img class="card-image" src="https://images.unsplash.com/photo-1503387762-592dedb8267e?auto=format&fit=crop&w=600&q=80" alt="Renovation Project at Coimbatore" />
+          </div>
+          <div class="card-info">
+            <div class="card-text-block">
+              <h3 class="card-title">Renovation Project</h3>
+              <div class="card-location-wrapper">
+                <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span class="card-location">Coimbatore</span>
+              </div>
+            </div>
+            <a href="#" class="card-arrow-link" aria-label="View Project Details">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pagination dots -->
+      <div class="showcase-pagination" id="showcase-pagination-dots">
+        <span class="showcase-dot active" data-index="0"></span>
+        <span class="showcase-dot" data-index="1"></span>
+        <span class="showcase-dot" data-index="2"></span>
+        <span class="showcase-dot" data-index="3"></span>
+        <span class="showcase-dot" data-index="4"></span>
+        <span class="showcase-dot" data-index="5"></span>
+      </div>
+
+      <!-- Featured Project Container -->
+      <div class="featured-project-container">
+        <div class="featured-project-grid">
+          
+          <!-- Left: Text info -->
+          <div class="featured-project-info">
+            <span class="featured-tag">FEATURED PROJECT</span>
+            <h3 class="featured-project-title">Sunrise Park<br>Residency</h3>
+            <p class="featured-project-desc">
+              A premium residential project crafted for modern living.
+            </p>
+            <a href="index.html#contact" class="btn-featured-view">
+              View Full Project
+              <svg class="btn-featured-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </a>
+          </div>
+
+          <!-- Right: Horizontal Video Slider wrapper -->
+          <div class="featured-slider-wrapper">
+            <div class="featured-cards-slider" id="featured-video-slider">
+              
+              <!-- Video Preview Card 1 -->
+              <div class="video-preview-card" data-video-url="https://player.vimeo.com/video/352219760?autoplay=1&muted=0&loop=1">
+                <div class="video-thumbnail-wrapper">
+                  <img class="video-thumbnail" src="assets/Project Gallery/Contemporary Home.png" alt="Project Overview Walkthrough Thumbnail" />
+                  <div class="video-play-overlay">
+                    <span class="video-play-icon-wrapper">
+                      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="8,5 19,12 8,19" fill="currentColor" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="video-card-info">
+                  <h4 class="video-card-title">Project Overview</h4>
+                  <div class="video-card-location">
+                    <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Coimbatore
+                  </div>
+                </div>
+              </div>
+
+              <!-- Video Preview Card 2 -->
+              <div class="video-preview-card" data-video-url="https://player.vimeo.com/video/343276686?autoplay=1&muted=0&loop=1">
+                <div class="video-thumbnail-wrapper">
+                  <img class="video-thumbnail" src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=600&q=80" alt="Clubhouse Tour Walkthrough Thumbnail" />
+                  <div class="video-play-overlay">
+                    <span class="video-play-icon-wrapper">
+                      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="8,5 19,12 8,19" fill="currentColor" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="video-card-info">
+                  <h4 class="video-card-title">Clubhouse Tour</h4>
+                  <div class="video-card-location">
+                    <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Coimbatore
+                  </div>
+                </div>
+              </div>
+
+              <!-- Video Preview Card 3 -->
+              <div class="video-preview-card" data-video-url="https://player.vimeo.com/video/285573456?autoplay=1&muted=0&loop=1">
+                <div class="video-thumbnail-wrapper">
+                  <img class="video-thumbnail" src="assets/Project Gallery/Elegant Interior.png" alt="Interior Walkthrough Thumbnail" />
+                  <div class="video-play-overlay">
+                    <span class="video-play-icon-wrapper">
+                      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="8,5 19,12 8,19" fill="currentColor" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="video-card-info">
+                  <h4 class="video-card-title">Interior Walkthrough</h4>
+                  <div class="video-card-location">
+                    <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Coimbatore
+                  </div>
+                </div>
+              </div>
+
+              <!-- Video Preview Card 4 -->
+              <div class="video-preview-card" data-video-url="https://player.vimeo.com/video/338902506?autoplay=1&muted=0&loop=1">
+                <div class="video-thumbnail-wrapper">
+                  <img class="video-thumbnail" src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=600&q=80" alt="Welcome to Sunrise Park Thumbnail" />
+                  <div class="video-play-overlay">
+                    <span class="video-play-icon-wrapper">
+                      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="8,5 19,12 8,19" fill="currentColor" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="video-card-info">
+                  <h4 class="video-card-title">Welcome to Sunrise Park</h4>
+                  <div class="video-card-location">
+                    <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Coimbatore
+                  </div>
+                </div>
+              </div>
+
+              <!-- Video Preview Card 5 -->
+              <div class="video-preview-card" data-video-url="https://player.vimeo.com/video/325769165?autoplay=1&muted=0&loop=1">
+                <div class="video-thumbnail-wrapper">
+                  <img class="video-thumbnail" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=600&q=80" alt="Construction Progress Walkthrough Thumbnail" />
+                  <div class="video-play-overlay">
+                    <span class="video-play-icon-wrapper">
+                      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <polygon points="8,5 19,12 8,19" fill="currentColor" />
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+                <div class="video-card-info">
+                  <h4 class="video-card-title">Construction Progress</h4>
+                  <div class="video-card-location">
+                    <svg class="loc-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                      <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    Coimbatore
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Featured Video Slider Navigation Group -->
+            <div class="featured-nav-group">
+              <button class="featured-nav-btn prev-btn" id="featured-prev" aria-label="Previous Videos">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="15 18 9 12 15 6" />
+                </svg>
+              </button>
+              <button class="featured-nav-btn next-btn" id="featured-next" aria-label="Next Videos">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="faq-container">
+      <div class="faq-grid">
+        
+        <!-- Left Column: Content & Support Details -->
+        <div class="faq-content-col">
+          <div class="faq-tagline-wrapper">
+            <span class="faq-tagline">FAQ</span>
+            <div class="faq-tagline-line"></div>
+          </div>
+          
+          <h2 class="faq-title">Frequently Asked<br><span class="serif-green">Questions</span></h2>
+          <div class="faq-title-underline"></div>
+          
+          <p class="faq-description">
+            Find answers to common questions about our services, process, and policies.
+          </p>
+
+
+          <!-- Bottom: Architectural Villa Rendering Image -->
+          <div class="faq-building-wrapper">
+            <div class="faq-building-backdrop"></div>
+            <img class="faq-building-img" src="assets/project_faq.png" alt="FAQ villa render illustration" />
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Accordion List -->
+        <div class="faq-accordion-col">
+          
+          <!-- Accordion Item 1 (Active by default) -->
+          <div class="faq-item active">
+            <div class="faq-item-header">
+              <div class="faq-item-number">01</div>
+              <h3 class="faq-item-title">What types of projects do you handle?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                We handle a wide range of projects including residential, commercial, industrial, interior design, and renovation projects.
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 2 -->
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-number">02</div>
+              <h3 class="faq-item-title">How long does a typical project take?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                Timeline varies depending on the project scope and complexity. Residential builds typically take 8-14 months, while commercial projects range from 10-18 months. We always provide a detailed schedule before starting.
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 3 -->
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-number">03</div>
+              <h3 class="faq-item-title">Do you provide design and build services?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                Yes, we offer complete end-to-end design and build solutions. Our integrated team of architects, designers, and construction specialists handles everything from planning approvals to final handover.
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 4 -->
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-number">04</div>
+              <h3 class="faq-item-title">How do you ensure quality in construction?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                We enforce strict quality control measures at every stage. This includes using premium certified materials, employing experienced site engineers, conducting regular inspections, and adhering to strict building codes.
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 5 -->
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-number">05</div>
+              <h3 class="faq-item-title">Can I make changes during the construction process?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                Yes, modifications can be made through a formal change order process. We assess the impact of changes on the timeline and budget, discuss options with you, and proceed only after your written approval.
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 6 -->
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-number">06</div>
+              <h3 class="faq-item-title">Do you help with permits and approvals?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                Absolutely. We manage the entire documentation, application, and liaison process with local planning authorities and corporation bodies to obtain all necessary building permits and approvals.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="footer-container">
+ 
+       <!-- Top Grid: 3 main columns -->
+       <div class="footer-main-grid">
+ 
+         <!-- Left Column: Brand Card (Dark Green) -->
+         <div class="footer-brand-card">
+           <div class="footer-brand-logo-area">
+             <img class="footer-brand-logo" src="assets/Logo.png" alt="Ideal Associate Logo" />
+           </div>
+           <div class="footer-brand-divider"></div>
+           <h3 class="footer-brand-tagline">
+             Creating Spaces.<br><span class="green-highlight">Building Trust.</span>
+           </h3>
+           <div class="footer-brand-divider"></div>
+           <p class="footer-brand-desc">
+             We design and build spaces that inspire and stand the test of time. Quality, integrity and innovation in
+             every step of the journey.
+           </p>
+           <div class="footer-social-circles">
+             <a href="#" aria-label="Facebook">
+               <svg viewBox="0 0 24 24" fill="currentColor">
+                 <path
+                   d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
+               </svg>
+             </a>
+             <a href="#" aria-label="Instagram">
+               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                 stroke-linejoin="round">
+                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                 <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+               </svg>
+             </a>
+             <a href="#" aria-label="LinkedIn">
+               <svg viewBox="0 0 24 24" fill="currentColor">
+                 <path
+                   d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+               </svg>
+             </a>
+             <a href="#" aria-label="YouTube">
+               <svg viewBox="0 0 24 24" fill="currentColor">
+                 <path
+                   d="M23.498 6.163c-.272-1.022-1.074-1.826-2.099-2.099C19.537 3.5 12 3.5 12 3.5s-7.537 0-9.399.564C1.576 4.337.774 5.14.502 6.163.003 8.07 0 12 0 12s.003 3.93.502 5.837c.272 1.022 1.074 1.826 2.099 2.099C4.463 20.5 12 20.5 12 20.5s7.537 0 9.399-.564c1.025-.273 1.827-1.077 2.099-2.099.5-1.907.502-5.837.502-5.837s-.002-3.93-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+               </svg>
+             </a>
+           </div>
+         </div>
+ 
+         <!-- Middle Column: Our Services cards & Stats -->
+         <div class="footer-services-column">
+           <span class="footer-column-tag">OUR SERVICES</span>
+           <h2 class="footer-column-heading">
+             Design. Build. Deliver.<br>All Under <span class="green-highlight">One Roof.</span>
+           </h2>
+ 
+           <!-- Row of 5 service cards -->
+           <div class="footer-service-cards-row">
+             <!-- 1. 2D Plan -->
+             <div class="footer-service-card">
+               <div class="service-card-icon-box">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round">
+                   <rect x="3" y="3" width="18" height="18" rx="2" />
+                   <path d="M9 3v18M15 3v18M3 9h18M3 15h18" />
+                 </svg>
+               </div>
+               <h4>2D PLAN</h4>
+               <p>Smart & practical layouts tailored to your needs.</p>
+             </div>
+ 
+             <!-- 2. 3D Plan -->
+             <div class="footer-service-card">
+               <div class="service-card-icon-box">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round">
+                   <path
+                     d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                   <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                   <line x1="12" y1="22.08" x2="12" y2="12" />
+                 </svg>
+               </div>
+               <h4>3D PLAN</h4>
+               <p>Realistic 3D views that bring your dream to life.</p>
+             </div>
+ 
+             <!-- 3. Interior Design -->
+             <div class="footer-service-card">
+               <div class="service-card-icon-box">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round">
+                   <path d="M4 18h16M7 14h10M5 14V8a3 3 0 0 1 6 0v6M13 14V8a3 3 0 0 1 6 0v6" />
+                 </svg>
+               </div>
+               <h4>INTERIOR DESIGN</h4>
+               <p>Beautiful interiors that match your lifestyle.</p>
+             </div>
+ 
+             <!-- 4. Elevation -->
+             <div class="footer-service-card">
+               <div class="service-card-icon-box">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round">
+                   <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                   <line x1="9" y1="22" x2="9" y2="16" />
+                   <line x1="15" y1="22" x2="15" y2="16" />
+                   <line x1="9" y1="16" x2="15" y2="16" />
+                   <path d="M8 6h2v2H8zm6 0h2v2h-2zm-6 5h2v2H8zm6 0h2v2h-2z" />
+                 </svg>
+               </div>
+               <h4>ELEVATION</h4>
+               <p>Stunning elevations that enhance your property value.</p>
+             </div>
+ 
+             <!-- 5. Structural Design -->
+             <div class="footer-service-card">
+               <div class="service-card-icon-box">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                   stroke-linejoin="round">
+                   <rect x="3" y="3" width="18" height="18" rx="2" />
+                   <line x1="3" y1="21" x2="21" y2="3" />
+                   <line x1="12" y1="3" x2="12" y2="21" />
+                   <line x1="3" y1="12" x2="21" y2="12" />
+                 </svg>
+               </div>
+               <h4>STRUCTURAL DESIGN</h4>
+               <p>Safe, stable & efficient structural solutions.</p>
+             </div>
+           </div>
+ 
+           <!-- Bottom statistics container -->
+           <div class="footer-stats-row-container">
+             <!-- Stat 1 -->
+             <div class="footer-stat-box">
+               <div class="footer-stat-icon green-shield">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                   <polyline points="9 11 11 13 15 9" />
+                 </svg>
+               </div>
+               <div class="footer-stat-details">
+                 <span class="stat-number">15+</span>
+                 <span class="stat-desc">Years of Experience</span>
+               </div>
+             </div>
+             <!-- Stat 2 -->
+             <div class="footer-stat-box">
+               <div class="footer-stat-icon">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                   <rect x="3" y="3" width="18" height="18" rx="2" />
+                   <path d="M9 3v18M15 3v18M3 9h18M3 15h18" />
+                 </svg>
+               </div>
+               <div class="footer-stat-details">
+                 <span class="stat-number">250+</span>
+                 <span class="stat-desc">Projects Completed</span>
+               </div>
+             </div>
+             <!-- Stat 3 -->
+             <div class="footer-stat-box">
+               <div class="footer-stat-icon">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                   <circle cx="12" cy="12" r="10" />
+                   <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                   <line x1="9" y1="9" x2="9.01" y2="9" />
+                   <line x1="15" y1="9" x2="15.01" y2="9" />
+                 </svg>
+               </div>
+               <div class="footer-stat-details">
+                 <span class="stat-number">300+</span>
+                 <span class="stat-desc">Happy Clients</span>
+               </div>
+             </div>
+             <!-- Stat 4 -->
+             <div class="footer-stat-box">
+               <div class="footer-stat-icon">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                   <circle cx="12" cy="10" r="3" />
+                 </svg>
+               </div>
+               <div class="footer-stat-details">
+                 <span class="stat-number">10+</span>
+                 <span class="stat-desc">Cities Served</span>
+               </div>
+             </div>
+           </div>
+         </div>
+ 
+         <!-- Right Column: Location & Map -->
+         <div class="footer-location-column">
+           <span class="footer-column-tag">OUR LOCATION</span>
+           <h2 class="footer-column-heading">Find Us Here</h2>
+ 
+           <div class="footer-map-card">
+             <iframe
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.789182319207!2d78.68267231480084!3d10.827418992287114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf506ea467645%3A0x6a1005a39626c92d!2sThillai%20Nagar%2C%20Tiruchirappalli%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1659123456789!5m2!1sen!2sin"
+               class="footer-map-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+             </iframe>
+ 
+             <!-- Map Floating Address Card -->
+             <div class="footer-map-overlay-card">
+               <div class="footer-map-overlay-icon">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                   <path d="M3 9.5L12 4l9 5.5v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9z" />
+                   <path d="M9 22V12h6v10" />
+                 </svg>
+               </div>
+               <div class="footer-map-overlay-text">
+                 <h5>Ideal Associate</h5>
+                 <p>#12G, 11th CROSS EAST, THILLAI NAGAR, TRICHY - 620018</p>
+               </div>
+             </div>
+           </div>
+ 
+           <a href="https://maps.google.com/?q=Thillai+Nagar+Trichy" target="_blank" class="footer-view-maps-btn">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="view-maps-icon">
+               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+               <polyline points="15 3 21 3 21 9" />
+               <line x1="10" y1="14" x2="21" y2="3" />
+             </svg>
+             <span>View on Google Maps</span>
+           </a>
+         </div>
+       </div>
+ 
+       <!-- Newsletter Banner -->
+       <div class="footer-newsletter-banner">
+         <div class="newsletter-left">
+           <div class="newsletter-icon-circle">
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+               stroke-linejoin="round">
+               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+               <polyline points="22,6 12,13 2,6" />
+             </svg>
+           </div>
+           <div class="newsletter-text">
+             <h3>Stay Updated</h3>
+             <p>Subscribe to our newsletter for the latest updates and project insights.</p>
+           </div>
+         </div>
+         <form class="newsletter-form-container" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+           <input type="email" class="newsletter-input-field" placeholder="Enter your email address" required />
+           <button type="submit" class="newsletter-submit-btn">
+             <span>Subscribe</span>
+             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="submit-send-icon">
+               <line x1="22" y1="2" x2="11" y2="13" />
+               <polygon points="22 2 15 22 11 13 2 9 22 2" />
+             </svg>
+           </button>
+         </form>
+       </div>
+ 
+       <!-- Bottom Black Footer Bar -->
+       <div class="footer-bottom-bar">
+         <div class="footer-bottom-copyright">
+           © 2025 <span class="green-text">Ideal Associate</span>. All Rights Reserved.
+         </div>
+ 
+         <div class="footer-bottom-developer">
+           Designed & Developed by <a href="https://buildzo.info/" target="_blank" style="text-decoration: none;"><span class="developer-highlight">Buildzo</span></a>
+         </div>
+ 
+         <div class="footer-bottom-links">
+           <a href="#">Privacy Policy</a>
+           <span class="sep">|</span>
+           <a href="#">Terms of Service</a>
+         </div>
+       </div>
+ 
+     </div>
+  </footer>
+
+  <!-- Video Modal Overlay (Shared functionality with index) -->
+  <div class="video-modal-overlay" id="video-modal" aria-hidden="true" role="dialog">
+    <div class="modal-content">
+      <button class="close-modal" id="close-video-btn" aria-label="Close Showreel Modal">&times;</button>
+      <div class="video-ratio-box">
+        <iframe id="showreel-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- GSAP & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+
+  <!-- JavaScript Interaction File -->
+  <script type="module" src="script.js"></script>
+</body>
+
+</html>

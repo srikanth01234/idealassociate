@@ -57,7 +57,7 @@
         <li><a href="#" class="nav-item active">Home</a></li>
         <li><a href="#about" class="nav-item">About Us</a></li>
         <li><a href="#services" class="nav-item">Services</a></li>
-        <li><a href="#gallery" class="nav-item">Projects</a></li>
+        <li><a href="projects.html" class="nav-item">Projects</a></li>
         <li><a href="#contact" class="nav-item">Contact Us</a></li>
       </ul>
     </nav>
@@ -94,7 +94,7 @@
       <li><a href="#" class="mobile-nav-item">Home</a></li>
       <li><a href="#about" class="mobile-nav-item">About Us</a></li>
       <li><a href="#services" class="mobile-nav-item">Services</a></li>
-      <li><a href="#gallery" class="mobile-nav-item">Projects</a></li>
+      <li><a href="projects.html" class="mobile-nav-item">Projects</a></li>
       <li><a href="#contact" class="mobile-nav-item">Contact Us</a></li>
     </ul>
   </div>
@@ -319,7 +319,7 @@
           Every project we take on is a commitment to quality, precision and excellence. Here's a look at some of our
           signature builds.
         </p>
-        <a href="#all-projects" class="explore-all-btn" id="explore-all-projects-btn">
+        <a href="projects.html" class="explore-all-btn" id="explore-all-projects-btn">
           EXPLORE ALL PROJECTS
           <svg class="explore-arrow-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
             <line x1="2" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.5" />
@@ -470,23 +470,11 @@
             <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
               alt="Premium Modern Architecture" class="services-showcase-img">
 
-            <!-- Overlay Badge -->
-            <div class="services-overlay-badge">
-              <div class="badge-icon-box">
-                <svg class="badge-logo-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                  <polygon points="20,80 40,80 40,30 20,40" fill="none" stroke="var(--gold-bright)"
-                    stroke-width="2.5" />
-                  <polygon points="45,80 65,80 65,15 45,25" fill="none" stroke="var(--gold-bright)"
-                    stroke-width="2.5" />
-                  <polygon points="70,80 90,80 90,45 70,55" fill="none" stroke="var(--gold-bright)"
-                    stroke-width="2.5" />
-                  <line x1="10" y1="80" x2="90" y2="80" stroke="var(--gold-bright)" stroke-width="2.5" />
-                </svg>
-              </div>
-              <div class="badge-text-box">
-                <p class="badge-text">Building more than structures—<br><span class="badge-highlight">building
-                    trust.</span></p>
-              </div>
+            <!-- Price Overlay Badge -->
+            <div class="services-cost-overlay">
+              <span class="cost-label">Construction cost</span>
+              <span class="cost-original">₹ 2,550/ sqft</span>
+              <span class="cost-discounted">₹ 2,299/ sqft <span class="cost-only">only</span></span>
             </div>
           </div>
         </div>
@@ -499,7 +487,7 @@
           <div class="services-subtitle-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="subtitle-square-svg">
               <rect x="3" y="3" width="18" height="18" rx="2" />
-              <circle cx="12" cy="12" r="2.5" fill="currentColor" />
+              <polyline points="9 11 11 13 15 9" />
             </svg>
           </div>
           <span class="services-subtitle-text">WHAT WE DO</span>
@@ -508,61 +496,92 @@
 
         <!-- Heading -->
         <h2 class="services-heading">
-          Services That <span class="serif-bold">Build</span> <span class="serif-highlight">Excellence.</span>
+          Services That <br>Build <span class="serif-highlight">Excellence.</span>
         </h2>
         <div class="services-heading-underline"></div>
 
-        <!-- Description -->
-        <p class="services-description">
-          End-to-end construction solutions crafted with precision, innovation, and a commitment to lasting quality. We
-          turn your vision into structures that stand the test of time.
-        </p>
-
         <!-- Features Grid -->
         <div class="services-features-grid">
-          <!-- Feature 1: Quality Assurance -->
-          <div class="service-feature-card">
-            <div class="feature-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feature-icon-svg">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                <polyline points="9 11 11 13 15 9" />
-              </svg>
+          <!-- Column 1: Our Free Services -->
+          <div class="service-feature-column">
+            <div class="feature-column-header">
+              <div class="feature-icon-wrapper">
+                <!-- Gift Box Icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feature-icon-svg">
+                  <polyline points="20 12 20 22 4 22 4 12" />
+                  <rect x="2" y="7" width="20" height="5" />
+                  <line x1="12" y1="22" x2="12" y2="7" />
+                  <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                  <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                </svg>
+              </div>
+              <h3 class="feature-title">OUR FREE SERVICES</h3>
             </div>
-            <div class="feature-text-wrapper">
-              <h3 class="feature-title">Quality Assurance</h3>
-              <p class="feature-desc">We ensure the highest standards in every step.</p>
-            </div>
+
+            <ul class="free-services-list">
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>100% Vasthu plan</span>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>3D Elevation</span>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Structural Design</span>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>False ceiling hall only....</span>
+              </li>
+              <li>
+                <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>CCTV access for NRI's only</span>
+              </li>
+            </ul>
           </div>
 
-          <!-- Divider Line -->
+          <!-- Divider -->
           <div class="feature-vertical-divider"></div>
 
-          <!-- Feature 2: Expert Team -->
-          <div class="service-feature-card">
-            <div class="feature-icon-wrapper">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feature-icon-svg">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-              </svg>
+          <!-- Column 2: Expert Team -->
+          <div class="service-feature-column">
+            <div class="feature-column-header">
+              <div class="feature-icon-wrapper">
+                <!-- Group/Team Icon -->
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="feature-icon-svg">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3 class="feature-title">EXPERT TEAM</h3>
             </div>
-            <div class="feature-text-wrapper">
-              <h3 class="feature-title">Expert Team</h3>
-              <p class="feature-desc">Skilled professionals dedicated to your vision.</p>
+            <p class="feature-desc-text">
+              Skilled professionals dedicated to your vision.
+            </p>
+            <div class="services-btn-wrapper">
+              <a href="#services" class="services-explore-btn">
+                <span>EXPLORE ALL SERVICES</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-arrow-svg">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12,5 19,12 12,19" />
+                </svg>
+              </a>
             </div>
           </div>
-        </div>
-
-        <!-- Explore All Services Button -->
-        <div class="services-btn-wrapper">
-          <a href="#services" class="services-explore-btn">
-            <span>EXPLORE ALL SERVICES</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-arrow-svg">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12,5 19,12 12,19" />
-            </svg>
-          </a>
         </div>
       </div>
 
@@ -720,7 +739,7 @@
           </p>
 
           <div class="gallery-cta-wrapper">
-            <a href="#projects" class="gallery-explore-btn">
+            <a href="projects.html" class="gallery-explore-btn">
               <span>VIEW ALL PROJECTS</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-arrow-svg">
                 <line x1="5" y1="12" x2="19" y2="12" />
@@ -755,8 +774,8 @@
             </svg>
           </div>
           <div class="showcase-image-wrapper">
-            <img src="assets/Project%20Gallery/Modern%20Residence.png"
-              alt="Modern Residence in Coimbatore" class="showcase-img">
+            <img src="assets/Project%20Gallery/Modern%20Residence.png" alt="Modern Residence in Coimbatore"
+              class="showcase-img">
 
             <div class="project-overlay-badge size-large">
               <div class="project-badge-icon">
@@ -783,8 +802,7 @@
         <!-- Card 1: Luxury Villa -->
         <div class="gallery-card">
           <div class="card-image-box">
-            <img src="assets/Project%20Gallery/Luxury%20Villa.png"
-              alt="Luxury Villa Erode" class="gallery-card-img">
+            <img src="assets/Project%20Gallery/Luxury%20Villa.png" alt="Luxury Villa Erode" class="gallery-card-img">
 
             <div class="project-overlay-badge">
               <div class="project-badge-icon">
@@ -806,8 +824,8 @@
         <!-- Card 2: Contemporary Home -->
         <div class="gallery-card">
           <div class="card-image-box">
-            <img src="assets/Project%20Gallery/Contemporary%20Home.png"
-              alt="Contemporary Home Tiruppur" class="gallery-card-img">
+            <img src="assets/Project%20Gallery/Contemporary%20Home.png" alt="Contemporary Home Tiruppur"
+              class="gallery-card-img">
 
             <div class="project-overlay-badge">
               <div class="project-badge-icon">
@@ -867,8 +885,8 @@
         <!-- Card 4: Elegant Interior -->
         <div class="gallery-card">
           <div class="card-image-box">
-            <img src="assets/Project%20Gallery/Elegant%20Interior.png"
-              alt="Elegant Interior Coimbatore" class="gallery-card-img">
+            <img src="assets/Project%20Gallery/Elegant%20Interior.png" alt="Elegant Interior Coimbatore"
+              class="gallery-card-img">
 
             <div class="project-overlay-badge">
               <div class="project-badge-icon">
@@ -890,8 +908,8 @@
         <!-- Card 5: Minimal Residence -->
         <div class="gallery-card">
           <div class="card-image-box">
-            <img src="assets/Project%20Gallery/Minimal%20Residence.png"
-              alt="Minimal Residence Salem" class="gallery-card-img">
+            <img src="assets/Project%20Gallery/Minimal%20Residence.png" alt="Minimal Residence Salem"
+              class="gallery-card-img">
 
             <div class="project-overlay-badge">
               <div class="project-badge-icon">
@@ -1332,6 +1350,182 @@
     </div>
   </section>
 
+  <!-- FAQ Section -->
+  <section class="faq-section" id="faq">
+    <div class="faq-container">
+      <div class="faq-grid">
+        
+        <!-- Left Column: Content & Support Details -->
+        <div class="faq-content-col">
+          <div class="faq-tagline-wrapper">
+            <span class="faq-tagline">FAQ</span>
+            <div class="faq-tagline-line"></div>
+          </div>
+          
+          <h2 class="faq-title">Frequently Asked<br><span class="serif-green">Questions</span></h2>
+          <div class="faq-title-underline"></div>
+          
+          <p class="faq-description">
+            Find answers to common questions about our services, process, and policies.
+          </p>
+
+          <!-- Bottom: Architectural Villa Rendering Image -->
+          <div class="faq-building-wrapper">
+            <div class="faq-building-backdrop"></div>
+            <img class="faq-building-img" src="assets/project_faq.png" alt="FAQ villa render illustration" />
+          </div>
+        </div>
+
+        <!-- Right Column: Interactive Accordion List -->
+        <div class="faq-accordion-col">
+          
+          <!-- Accordion Item 1 (Active by default) -->
+          <div class="faq-item active">
+            <div class="faq-item-header">
+              <div class="faq-item-number">01</div>
+              <h3 class="faq-item-title">What types of projects do you handle?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                We handle a wide range of projects including residential, commercial, industrial, interior design, and renovation projects.
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 2 -->
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-number">02</div>
+              <h3 class="faq-item-title">How long does a typical project take?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                Timeline varies depending on the project scope and complexity. Residential builds typically take 8-14 months, while commercial projects range from 10-18 months. We always provide a detailed schedule before starting.
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 3 -->
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-number">03</div>
+              <h3 class="faq-item-title">Do you provide design and build services?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                Yes, we offer complete end-to-end design and build solutions. Our integrated team of architects, designers, and construction specialists handles everything from planning approvals to final handover.
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 4 -->
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-number">04</div>
+              <h3 class="faq-item-title">How do you ensure quality in construction?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                We enforce strict quality control measures at every stage. This includes using premium certified materials, employing experienced site engineers, conducting regular inspections, and adhering to strict building codes.
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 5 -->
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-number">05</div>
+              <h3 class="faq-item-title">Can I make changes during the construction process?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                Yes, modifications can be made through a formal change order process. We assess the impact of changes on the timeline and budget, discuss options with you, and proceed only after your written approval.
+              </div>
+            </div>
+          </div>
+
+          <!-- Accordion Item 6 -->
+          <div class="faq-item">
+            <div class="faq-item-header">
+              <div class="faq-item-number">06</div>
+              <h3 class="faq-item-title">Do you help with permits and approvals?</h3>
+              <button class="faq-item-toggle" aria-label="Toggle Accordion Answer">
+                <svg class="toggle-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <svg class="toggle-icon-minus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+              </button>
+            </div>
+            <div class="faq-item-content">
+              <div class="faq-item-vertical-line"></div>
+              <div class="faq-item-answer">
+                Absolutely. We manage the entire documentation, application, and liaison process with local planning authorities and corporation bodies to obtain all necessary building permits and approvals.
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
   <!-- Contact Section -->
   <section class="contact-section" id="contact">
     <div class="contact-container">
@@ -1366,7 +1560,7 @@
             </div>
             <div class="contact-detail-text">
               <h4 class="contact-detail-title">OUR LOCATION</h4>
-              <p class="contact-detail-desc">123, Green Street, Coimbatore, Tamil Nadu - 641001</p>
+              <p class="contact-detail-desc">#12G, 11th CROSS EAST, THILLAI NAGAR, TRICHY - 620018</p>
             </div>
           </div>
 
@@ -1383,8 +1577,8 @@
             <div class="contact-detail-text">
               <h4 class="contact-detail-title">PHONE NUMBER</h4>
               <p class="contact-detail-desc">
-                <span class="phone-desktop">+91 12345 67890<br>+91 98765 43210</span>
-                <span class="phone-mobile">+91 12345 67890 &nbsp;|&nbsp; +91 98765 43210</span>
+                <span class="phone-desktop">+91 88838 81255<br>+91 93636 25001</span>
+                <span class="phone-mobile">+91 88838 81255 &nbsp;|&nbsp; +91 93636 25001</span>
               </p>
             </div>
           </div>
@@ -1400,7 +1594,8 @@
             </div>
             <div class="contact-detail-text">
               <h4 class="contact-detail-title">EMAIL ADDRESS</h4>
-              <p class="contact-detail-desc">info@jvconstruction.com<br>support@jvconstruction.com</p>
+              <p class="contact-detail-desc"><a href="mailto:idealassociate@outlook.com"
+                  style="color: inherit; text-decoration: none;">idealassociate@outlook.com</a></p>
             </div>
           </div>
 
@@ -1494,96 +1689,271 @@
   <footer class="site-footer">
     <div class="footer-container">
 
-      <!-- Top Row -->
-      <div class="footer-top-row">
-        <div class="footer-brand-column">
-          <div class="footer-logo-wrapper">
-            <img class="footer-logo-img" src="assets/Logo.png" alt="JV Construction Logo" />
-          </div>
-          <p class="footer-brand-description">
-            We build spaces that inspire and stand the test of time. Quality, integrity and innovation in every step.
-          </p>
-        </div>
+      <!-- Top Grid: 3 main columns -->
+      <div class="footer-main-grid">
 
-        <!-- Why Choose Us Badges Column -->
-        <div class="footer-badges-column">
-          <h4 class="footer-column-title">WHY CHOOSE US?</h4>
-          <div class="footer-badges-row">
-            <!-- Badge 1: Quality Construction -->
-            <div class="footer-badge-item">
-              <div class="footer-badge-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                </svg>
-              </div>
-              <span class="footer-badge-text">QUALITY<br>CONSTRUCTION</span>
-            </div>
-            <!-- Badge 2: On Time Delivery -->
-            <div class="footer-badge-item">
-              <div class="footer-badge-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10" />
-                  <polyline points="12 6 12 12 16 14" />
-                </svg>
-              </div>
-              <span class="footer-badge-text">ON TIME<br>DELIVERY</span>
-            </div>
-            <!-- Badge 3: Expert Team -->
-            <div class="footer-badge-item">
-              <div class="footer-badge-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path
-                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                </svg>
-              </div>
-              <span class="footer-badge-text">EXPERT<br>TEAM</span>
-            </div>
-            <!-- Badge 4: Client Satisfaction -->
-            <div class="footer-badge-item">
-              <div class="footer-badge-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round">
-                  <path
-                    d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3" />
-                </svg>
-              </div>
-              <span class="footer-badge-text">CLIENT<br>SATISFACTION</span>
-            </div>
+        <!-- Left Column: Brand Card (Dark Green) -->
+        <div class="footer-brand-card">
+          <div class="footer-brand-logo-area">
+            <img class="footer-brand-logo" src="assets/Logo.png" alt="Ideal Associate Logo" />
           </div>
-        </div>
-
-        <!-- Stay Updated Newsletter Column -->
-        <div class="footer-newsletter-column">
-          <h4 class="footer-column-title">STAY UPDATED</h4>
-          <p class="footer-newsletter-desc">
-            Subscribe to our newsletter for the latest updates and project insights.
+          <div class="footer-brand-divider"></div>
+          <h3 class="footer-brand-tagline">
+            Creating Spaces.<br><span class="green-highlight">Building Trust.</span>
+          </h3>
+          <div class="footer-brand-divider"></div>
+          <p class="footer-brand-desc">
+            We design and build spaces that inspire and stand the test of time. Quality, integrity and innovation in
+            every step of the journey.
           </p>
-          <form class="footer-newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
-            <input type="email" class="footer-newsletter-input" placeholder="Enter your email" required
-              aria-label="Newsletter Email Input">
-            <button type="submit" class="footer-newsletter-submit-btn" aria-label="Subscribe to Newsletter">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <line x1="22" y1="2" x2="11" y2="13" />
-                <polygon points="22 2 15 22 11 13 2 9 22 2" />
+          <div class="footer-social-circles">
+            <a href="#" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
               </svg>
-            </button>
-          </form>
+            </a>
+            <a href="#" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.779-1.75-1.75s.784-1.75 1.75-1.75 1.75.779 1.75 1.75-.784 1.75-1.75 1.75zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+              </svg>
+            </a>
+            <a href="#" aria-label="YouTube">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path
+                  d="M23.498 6.163c-.272-1.022-1.074-1.826-2.099-2.099C19.537 3.5 12 3.5 12 3.5s-7.537 0-9.399.564C1.576 4.337.774 5.14.502 6.163.003 8.07 0 12 0 12s.003 3.93.502 5.837c.272 1.022 1.074 1.826 2.099 2.099C4.463 20.5 12 20.5 12 20.5s7.537 0 9.399-.564c1.025-.273 1.827-1.077 2.099-2.099.5-1.907.502-5.837.502-5.837s-.002-3.93-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Middle Column: Our Services cards & Stats -->
+        <div class="footer-services-column">
+          <span class="footer-column-tag">OUR SERVICES</span>
+          <h2 class="footer-column-heading">
+            Design. Build. Deliver.<br>All Under <span class="green-highlight">One Roof.</span>
+          </h2>
+
+          <!-- Row of 5 service cards -->
+          <div class="footer-service-cards-row">
+            <!-- 1. 2D Plan -->
+            <div class="footer-service-card">
+              <div class="service-card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M9 3v18M15 3v18M3 9h18M3 15h18" />
+                </svg>
+              </div>
+              <h4>2D PLAN</h4>
+              <p>Smart & practical layouts tailored to your needs.</p>
+            </div>
+
+            <!-- 2. 3D Plan -->
+            <div class="footer-service-card">
+              <div class="service-card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path
+                    d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                  <line x1="12" y1="22.08" x2="12" y2="12" />
+                </svg>
+              </div>
+              <h4>3D PLAN</h4>
+              <p>Realistic 3D views that bring your dream to life.</p>
+            </div>
+
+            <!-- 3. Interior Design -->
+            <div class="footer-service-card">
+              <div class="service-card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M4 18h16M7 14h10M5 14V8a3 3 0 0 1 6 0v6M13 14V8a3 3 0 0 1 6 0v6" />
+                </svg>
+              </div>
+              <h4>INTERIOR DESIGN</h4>
+              <p>Beautiful interiors that match your lifestyle.</p>
+            </div>
+
+            <!-- 4. Elevation -->
+            <div class="footer-service-card">
+              <div class="service-card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="4" y="2" width="16" height="20" rx="2" ry="2" />
+                  <line x1="9" y1="22" x2="9" y2="16" />
+                  <line x1="15" y1="22" x2="15" y2="16" />
+                  <line x1="9" y1="16" x2="15" y2="16" />
+                  <path d="M8 6h2v2H8zm6 0h2v2h-2zm-6 5h2v2H8zm6 0h2v2h-2z" />
+                </svg>
+              </div>
+              <h4>ELEVATION</h4>
+              <p>Stunning elevations that enhance your property value.</p>
+            </div>
+
+            <!-- 5. Structural Design -->
+            <div class="footer-service-card">
+              <div class="service-card-icon-box">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <line x1="3" y1="21" x2="21" y2="3" />
+                  <line x1="12" y1="3" x2="12" y2="21" />
+                  <line x1="3" y1="12" x2="21" y2="12" />
+                </svg>
+              </div>
+              <h4>STRUCTURAL DESIGN</h4>
+              <p>Safe, stable & efficient structural solutions.</p>
+            </div>
+          </div>
+
+          <!-- Bottom statistics container -->
+          <div class="footer-stats-row-container">
+            <!-- Stat 1 -->
+            <div class="footer-stat-box">
+              <div class="footer-stat-icon green-shield">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                  <polyline points="9 11 11 13 15 9" />
+                </svg>
+              </div>
+              <div class="footer-stat-details">
+                <span class="stat-number">15+</span>
+                <span class="stat-desc">Years of Experience</span>
+              </div>
+            </div>
+            <!-- Stat 2 -->
+            <div class="footer-stat-box">
+              <div class="footer-stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="3" width="18" height="18" rx="2" />
+                  <path d="M9 3v18M15 3v18M3 9h18M3 15h18" />
+                </svg>
+              </div>
+              <div class="footer-stat-details">
+                <span class="stat-number">250+</span>
+                <span class="stat-desc">Projects Completed</span>
+              </div>
+            </div>
+            <!-- Stat 3 -->
+            <div class="footer-stat-box">
+              <div class="footer-stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                  <line x1="9" y1="9" x2="9.01" y2="9" />
+                  <line x1="15" y1="9" x2="15.01" y2="9" />
+                </svg>
+              </div>
+              <div class="footer-stat-details">
+                <span class="stat-number">300+</span>
+                <span class="stat-desc">Happy Clients</span>
+              </div>
+            </div>
+            <!-- Stat 4 -->
+            <div class="footer-stat-box">
+              <div class="footer-stat-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="footer-stat-details">
+                <span class="stat-number">10+</span>
+                <span class="stat-desc">Cities Served</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Location & Map -->
+        <div class="footer-location-column">
+          <span class="footer-column-tag">OUR LOCATION</span>
+          <h2 class="footer-column-heading">Find Us Here</h2>
+
+          <div class="footer-map-card">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.789182319207!2d78.68267231480084!3d10.827418992287114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3baaf506ea467645%3A0x6a1005a39626c92d!2sThillai%20Nagar%2C%20Tiruchirappalli%2C%20Tamil%20Nadu!5e0!3m2!1sen!2sin!4v1659123456789!5m2!1sen!2sin"
+              class="footer-map-iframe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+
+            <!-- Map Floating Address Card -->
+            <div class="footer-map-overlay-card">
+              <div class="footer-map-overlay-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 9.5L12 4l9 5.5v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-9z" />
+                  <path d="M9 22V12h6v10" />
+                </svg>
+              </div>
+              <div class="footer-map-overlay-text">
+                <h5>Ideal Associate</h5>
+                <p>#12G, 11th CROSS EAST, THILLAI NAGAR, TRICHY - 620018</p>
+              </div>
+            </div>
+          </div>
+
+          <a href="https://maps.google.com/?q=Thillai+Nagar+Trichy" target="_blank" class="footer-view-maps-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="view-maps-icon">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+              <polyline points="15 3 21 3 21 9" />
+              <line x1="10" y1="14" x2="21" y2="3" />
+            </svg>
+            <span>View on Google Maps</span>
+          </a>
         </div>
       </div>
 
-      <div class="footer-divider"></div>
+      <!-- Newsletter Banner -->
+      <div class="footer-newsletter-banner">
+        <div class="newsletter-left">
+          <div class="newsletter-icon-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+          </div>
+          <div class="newsletter-text">
+            <h3>Stay Updated</h3>
+            <p>Subscribe to our newsletter for the latest updates and project insights.</p>
+          </div>
+        </div>
+        <form class="newsletter-form-container" onsubmit="event.preventDefault(); alert('Subscribed successfully!');">
+          <input type="email" class="newsletter-input-field" placeholder="Enter your email address" required />
+          <button type="submit" class="newsletter-submit-btn">
+            <span>Subscribe</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="submit-send-icon">
+              <line x1="22" y1="2" x2="11" y2="13" />
+              <polygon points="22 2 15 22 11 13 2 9 22 2" />
+            </svg>
+          </button>
+        </form>
+      </div>
 
-      <!-- Bottom Row -->
-      <div class="footer-bottom-row">
-        <span class="footer-copyright">© 2025 JV Construction. All Rights Reserved.</span>
+      <!-- Bottom Black Footer Bar -->
+      <div class="footer-bottom-bar">
+        <div class="footer-bottom-copyright">
+          © 2025 <span class="green-text">Ideal Associate</span>. All Rights Reserved.
+        </div>
+
+        <div class="footer-bottom-developer">
+          Designed & Developed by <a href="https://buildzo.info/" target="_blank" style="text-decoration: none;"><span class="developer-highlight">Buildzo</span></a>
+        </div>
+
         <div class="footer-bottom-links">
-          <a href="#" class="footer-bottom-link">Privacy Policy</a>
-          <span class="footer-bottom-link-separator">|</span>
-          <a href="#" class="footer-bottom-link">Terms of Service</a>
+          <a href="#">Privacy Policy</a>
+          <span class="sep">|</span>
+          <a href="#">Terms of Service</a>
         </div>
       </div>
 
@@ -1605,6 +1975,9 @@
   <!-- GSAP & ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <!-- Lenis Smooth Scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
 
   <!-- JavaScript Interaction File -->
   <script type="module" src="script.js"></script>
