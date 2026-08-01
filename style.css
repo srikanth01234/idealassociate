@@ -976,13 +976,15 @@ body.loaded:not(.animating) .main-header {
   height: 0;
 }
 
-.video-ratio-box iframe {
+.video-ratio-box iframe,
+.video-ratio-box video {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   border: none;
+  background: #000;
 }
 
 .close-modal {
@@ -8993,4 +8995,180 @@ body.projects-page {
     font-size: 0.85rem;
     line-height: 1.6;
   }
+}
+
+/* ==========================================================================
+   PROJECT SHOWCASE TWO-ROW MARQUEE STYLING
+   ========================================================================== */
+.showcase-marquee-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  overflow: hidden;
+  width: 100%;
+  padding: 1.5rem 0;
+}
+
+.showcase-marquee-row {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+}
+
+.showcase-marquee-row::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+.showcase-marquee-row .marquee-content {
+  display: flex;
+  gap: 2rem;
+  flex-shrink: 0;
+  min-width: 100%;
+}
+
+/* ==========================================================================
+   FEATURED PROJECT VIDEO CARDS & PLAYER STYLING
+   ========================================================================== */
+.featured-slider-wrapper .video-preview-card {
+  flex: 0 0 320px;
+  max-width: 320px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  text-decoration: none;
+  display: block;
+}
+
+.featured-slider-wrapper .video-preview-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(21, 103, 53, 0.18);
+}
+
+.featured-slider-wrapper .video-thumbnail-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background-color: #0f1216;
+}
+
+.featured-video-player {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+/* Hover Grey Tint Overlay & Click to View Badge */
+.video-hover-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(15, 18, 22, 0.45); /* Elegant semi-transparent grey-tint tint */
+  backdrop-filter: blur(2px);
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.35s ease;
+  z-index: 5;
+}
+
+.click-to-view-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #122c1b;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  border-radius: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(10px) scale(0.95);
+  transition: transform 0.35s ease;
+}
+
+.click-to-view-badge svg {
+  width: 14px;
+  height: 14px;
+  fill: #156735;
+}
+
+.featured-slider-wrapper .video-preview-card:hover .video-hover-overlay {
+  opacity: 1;
+}
+
+.featured-slider-wrapper .video-preview-card:hover .click-to-view-badge {
+  transform: translateY(0) scale(1);
+}
+
+.featured-slider-wrapper .video-preview-card:hover .featured-video-player {
+  transform: scale(1.06);
+}
+
+/* ==========================================================================
+   NAVIGATION BUTTONS (PROMINENT GREEN FILL, WHITE ON HOVER)
+   ========================================================================== */
+.carousel-nav-group,
+.featured-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 10;
+}
+
+.carousel-nav-btn,
+.featured-nav-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #156735; /* Prominent green fill */
+  color: #ffffff;            /* White arrow */
+  border: 2px solid #156735;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(21, 103, 53, 0.25);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.carousel-nav-btn svg,
+.featured-nav-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke-width: 2.5px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover State: Fills with White color, Green arrow */
+.carousel-nav-btn:hover,
+.featured-nav-btn:hover {
+  background-color: #ffffff; /* White fill on hover */
+  color: #156735;            /* Green arrow on hover */
+  border-color: #156735;
+  box-shadow: 0 10px 24px rgba(21, 103, 53, 0.35);
+  transform: translateY(-2px) scale(1.06);
+}
+
+.carousel-nav-btn.prev-btn:hover svg,
+.featured-nav-btn.prev-btn:hover svg {
+  transform: translateX(-3px);
+}
+
+.carousel-nav-btn.next-btn:hover svg,
+.featured-nav-btn.next-btn:hover svg {
+  transform: translateX(3px);
 }

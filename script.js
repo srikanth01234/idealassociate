@@ -67,21 +67,38 @@ document.addEventListener('DOMContentLoaded', () => {
   // High-quality drone construction / architecture video showreel (Vimeo)
   const showreelUrl = "https://player.vimeo.com/video/352219760?autoplay=1&muted=0&loop=1";
 
+  const modalVideoPlayer = document.getElementById('modal-video-player');
+
   const openModal = () => {
-    if (videoModal && iframePlayer) {
-      iframePlayer.src = showreelUrl;
+    if (videoModal) {
+      if (iframePlayer) {
+        iframePlayer.style.display = 'block';
+        iframePlayer.src = showreelUrl;
+      }
+      if (modalVideoPlayer) {
+        modalVideoPlayer.style.display = 'none';
+        modalVideoPlayer.pause();
+      }
       videoModal.classList.add('active');
       videoModal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden'; // Stop background page scroll if any
+      document.body.style.overflow = 'hidden';
     }
   };
 
   const closeModal = () => {
-    if (videoModal && iframePlayer) {
+    if (videoModal) {
       videoModal.classList.remove('active');
       videoModal.setAttribute('aria-hidden', 'true');
-      iframePlayer.src = ''; // Stop video playback immediately
-      document.body.style.overflow = ''; // Restore standard body overflow
+      if (iframePlayer) {
+        iframePlayer.src = '';
+        iframePlayer.style.display = 'none';
+      }
+      if (modalVideoPlayer) {
+        modalVideoPlayer.pause();
+        modalVideoPlayer.src = '';
+        modalVideoPlayer.style.display = 'none';
+      }
+      document.body.style.overflow = '';
     }
   };
 
@@ -1027,24 +1044,70 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // D. Left & Right Scroll Buttons for Projects Slider
-    if (showcasePrev && showcaseSlider) {
+    // Continuous Smooth Ticker for 2-Row Showcase (Row 1 moves Left, Row 2 moves Right)
+    const row1 = document.getElementById('showcase-row-1');
+    const row2 = document.getElementById('showcase-row-2');
+    let isRow1Hovered = false;
+    let isRow2Hovered = false;
+    let marqueeAnimationFrame = null;
+
+    // Set initial scroll position for Row 2 so it can scroll backwards (Right) smoothly
+    if (row2) {
+      setTimeout(() => {
+        row2.scrollLeft = row2.scrollWidth - row2.clientWidth;
+      }, 100);
+    }
+
+    const tickMarqueeRows = () => {
+      // Row 1: Moves Left (scrollLeft increases) - pauses ONLY if Row 1 is hovered
+      if (row1 && !isRow1Hovered) {
+        row1.scrollLeft += 1.2;
+        const maxScroll1 = row1.scrollWidth - row1.clientWidth;
+        if (row1.scrollLeft >= maxScroll1 - 1) {
+          row1.scrollLeft = 0;
+        }
+      }
+
+      // Row 2: Moves Right (scrollLeft decreases) - pauses ONLY if Row 2 is hovered
+      if (row2 && !isRow2Hovered) {
+        row2.scrollLeft -= 1.2;
+        if (row2.scrollLeft <= 1) {
+          row2.scrollLeft = row2.scrollWidth - row2.clientWidth;
+        }
+      }
+
+      marqueeAnimationFrame = requestAnimationFrame(tickMarqueeRows);
+    };
+
+    if (row1) {
+      row1.addEventListener('mouseenter', () => { isRow1Hovered = true; });
+      row1.addEventListener('mouseleave', () => { isRow1Hovered = false; });
+      row1.addEventListener('touchstart', () => { isRow1Hovered = true; }, { passive: true });
+      row1.addEventListener('touchend', () => { isRow1Hovered = false; }, { passive: true });
+    }
+
+    if (row2) {
+      row2.addEventListener('mouseenter', () => { isRow2Hovered = true; });
+      row2.addEventListener('mouseleave', () => { isRow2Hovered = false; });
+      row2.addEventListener('touchstart', () => { isRow2Hovered = true; }, { passive: true });
+      row2.addEventListener('touchend', () => { isRow2Hovered = false; }, { passive: true });
+    }
+
+    if (marqueeAnimationFrame) cancelAnimationFrame(marqueeAnimationFrame);
+    tickMarqueeRows();
+
+    // Manual Nav Buttons (controls both rows)
+    if (showcasePrev) {
       showcasePrev.addEventListener('click', () => {
-        const cardWidth = 350 + 32; // card flex-basis + gap
-        showcaseSlider.scrollBy({
-          left: -cardWidth,
-          behavior: 'smooth'
-        });
+        if (row1) row1.scrollBy({ left: -380, behavior: 'smooth' });
+        if (row2) row2.scrollBy({ left: 380, behavior: 'smooth' });
       });
     }
 
-    if (showcaseNext && showcaseSlider) {
+    if (showcaseNext) {
       showcaseNext.addEventListener('click', () => {
-        const cardWidth = 350 + 32; // card flex-basis + gap
-        showcaseSlider.scrollBy({
-          left: cardWidth,
-          behavior: 'smooth'
-        });
+        if (row1) row1.scrollBy({ left: 380, behavior: 'smooth' });
+        if (row2) row2.scrollBy({ left: -380, behavior: 'smooth' });
       });
     }
 
@@ -1058,7 +1121,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (featuredPrev && featuredSlider) {
       featuredPrev.addEventListener('click', () => {
-        const cardWidth = 240 + 24; // card width + gap
+        const cardWidth = 320 + 24; // card width + gap
         featuredSlider.scrollBy({
           left: -cardWidth,
           behavior: 'smooth'
@@ -1068,7 +1131,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (featuredNext && featuredSlider) {
       featuredNext.addEventListener('click', () => {
-        const cardWidth = 240 + 24; // card width + gap
+        const cardWidth = 320 + 24; // card width + gap
         featuredSlider.scrollBy({
           left: cardWidth,
           behavior: 'smooth'
@@ -1076,16 +1139,34 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // F. Dynamic Walkthrough Video Loading in Shared Modal
+    // F. Big-Screen Modal Popup for Featured Video Cards (Without Downloading)
     const videoCards = showcaseSection.querySelectorAll('.video-preview-card');
     const sharedModal = document.getElementById('video-modal');
     const sharedIframe = document.getElementById('showreel-iframe');
+    const nativeModalVideo = document.getElementById('modal-video-player');
 
     videoCards.forEach(card => {
-      card.addEventListener('click', () => {
-        const videoUrl = card.getAttribute('data-video-url');
-        if (sharedModal && sharedIframe && videoUrl) {
-          sharedIframe.src = videoUrl;
+      card.addEventListener('click', (e) => {
+        e.preventDefault();
+        const videoFile = card.getAttribute('data-video-file');
+        
+        if (sharedModal && videoFile && nativeModalVideo) {
+          if (sharedIframe) {
+            sharedIframe.style.display = 'none';
+            sharedIframe.src = '';
+          }
+          
+          nativeModalVideo.style.display = 'block';
+          nativeModalVideo.src = videoFile;
+          nativeModalVideo.load();
+          
+          const playPromise = nativeModalVideo.play();
+          if (playPromise !== undefined) {
+            playPromise.catch(err => {
+              console.log('Autoplay prevented on popup modal:', err);
+            });
+          }
+          
           sharedModal.classList.add('active');
           sharedModal.setAttribute('aria-hidden', 'false');
           document.body.style.overflow = 'hidden';
